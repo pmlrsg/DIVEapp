@@ -35,12 +35,13 @@
 			 http-equiv="Content-Security-Policy"
 			 content="default-src 'self' https://maxcdn.bootstrapcdn.com https://ajax.googleapis.com https://diveapi.eofrom.space;"
 			 > -->
-	   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://ajax.googleapis.com data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; connect-src https://diveapi.eofrom.space; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com ; media-src *; img-src 'self' data: content:;">
+	   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://ajax.googleapis.com data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; connect-src https://diveapi.eofrom.space; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com ; media-src *; img-src 'self' data: content:;"> -->
 	   <meta name="format-detection" content="telephone=no">
        <meta name="msapplication-tap-highlight" content="no">
        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
 	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	   	<link rel="stylesheet" type="text/css" href="vendor/leaflet/css/leaflet.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
         <title>PML - Dive</title>
     </head>
@@ -64,6 +65,7 @@
 		</div>
         <script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="vendor/frappe/js/frappe-charts.js"></script>
+		<script type="text/javascript" src="vendor/leaflet/js/leaflet.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/includes/utils.js"></script>
 		<script type="text/javascript" src="js/includes/menubar.js"></script>

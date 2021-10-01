@@ -25,6 +25,8 @@ class SiteDetails {
 		this.regions = [];
 		this.chart   = null;
 		this.chartConfig = null;
+		this.mapConfig = null;
+		this.map = null;
 	}
 
 	compileListMarkup( site) {
@@ -53,6 +55,9 @@ class SiteDetails {
 		 */
 
 		thisItem += '<div class="dive-details">';
+		thisItem += '<div class="container-fluid">';
+		thisItem += '<div class="row">';
+		thisItem += '<div class="col col-md-4">';
 		thisItem += '<h1>'+ site.name         + '</h1>';
 		if ( site.description) {
 			thisItem += '<p>' + site.description  + '</p>';
@@ -63,8 +68,18 @@ class SiteDetails {
 		thisItem += '<p>modified:' + site.modify_time  + '</p>';
 		thisItem += '<p>latest score:' + site.latest_score + '</p>';
 		thisItem += '<p>score last updated:' + site.score_time   + '</p>';
+		thisItem += '</div>';
+		thisItem += '<div class="col col-md-8" id="dive-site-map" style="height: 300px;">';
+		thisItem += '</div>';
+		thisItem += '</div></div>';
 		thisItem += '<div id="dive-site-chart"></div>';
 		thisItem += '</div>';
+
+		this.mapConfig = {
+			center: [ site.latitude, site.longitude],
+			zoom: 2 };
+
+		this.mapConfig = [ site.latitude, site.longitude];
 
 		this.chartConfig = {
         // new Chart() in case of ES6 module with above usage
@@ -87,8 +102,21 @@ class SiteDetails {
 	}
 
 	runSecondaryJavascript() {
+		// drap chart
 		new frappe.Chart(
 			"#dive-site-chart", // or a DOM element,
 			this.chartConfig);
+		// draw map
+		$('#dive-site-map').html( "Map" );
+		this.map = L.map(
+			'dive-site-map',
+			{
+				center: [ this.mapConfig[0], this.mapConfig[1]],
+				zoom: 10 });
+		L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: ['a','b','c']
+		}).addTo( this.map );
+		L.marker( this.mapConfig ).addTo(this.map);
 	}
 }
