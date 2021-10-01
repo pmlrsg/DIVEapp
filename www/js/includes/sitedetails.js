@@ -112,7 +112,7 @@ class SiteDetails {
 			'dive-site-map',
 			{
 				center: [ this.mapConfig[0], this.mapConfig[1]],
-				zoom: 10 });
+				zoom: 8 });
 		L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 			subdomains: ['a','b','c']

@@ -151,3 +151,7 @@ body {
 .dive-details {
 	background-color: #aeb0b3;
 }
+
+#header-bar {
+	font-size: large;
+}
