@@ -6,11 +6,12 @@ const siteData = {
 		{
 			name:      "Score",
 			chartType: "line",
-			values:    [ 2,3,4,5,4,5 ]},
+			values:    [ 2,3,4,5,4,5 ]} /*,
 		{
 			name:      "Score Bar",
 			chartType: "bar",
-			values:    [ 2,3,4,5,4,5 ]}],
+			values:    [ 2,3,4,5,4,5 ]} )*/
+	],
 
 	yMarkers: [
 			   { label: "", value: 0, type: 'solid' },
@@ -62,10 +63,10 @@ class SiteDetails {
 		if ( site.description) {
 			thisItem += '<p>' + site.description  + '</p>';
 		}
-		thisItem += '<p>latitude:' + site.latitude     + '</p>';
-		thisItem += '<p>longitude:' + site.longitude    + '</p>';
-		thisItem += '<p>created:' + site.create_time  + '</p>';
-		thisItem += '<p>modified:' + site.modify_time  + '</p>';
+		thisItem += '<p>latitude:'     + site.latitude     + '</p>';
+		thisItem += '<p>longitude:'    + site.longitude    + '</p>';
+		thisItem += '<p>created:'      + site.create_time  + '</p>';
+		thisItem += '<p>modified:'     + site.modify_time  + '</p>';
 		thisItem += '<p>latest score:' + site.latest_score + '</p>';
 		thisItem += '<p>score last updated:' + site.score_time   + '</p>';
 		thisItem += '</div>';
@@ -102,7 +103,7 @@ class SiteDetails {
 	}
 
 	runSecondaryJavascript() {
-		// drap chart
+		// draw chart
 		new frappe.Chart(
 			"#dive-site-chart", // or a DOM element,
 			this.chartConfig);
