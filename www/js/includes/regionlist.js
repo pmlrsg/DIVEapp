@@ -12,6 +12,7 @@ function showSitesFromRegion( region) {
 			$('#dive-sites').show();
 			$('#dive-site-detail').hide();
 			menuBar.setBackButton( "app.fetchFeed();")
+			siteList.runSecondaryJavascript();
 		},
 		error: function(data, textStatus, errorThrown) {
 			console.error('Data: ');

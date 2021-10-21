@@ -23,23 +23,65 @@ function showSiteDetail( site, region) {
 	});
 }
 
+class SiteAreaFinder {
+	constructor() {
+		this.minLat =  Infinity;
+		this.maxLat = -Infinity;
+		this.minLon =  Infinity;
+		this.maxLon = -Infinity;
+	}
+
+	considerThis( lat, lon) {
+		if ( lat < this.minLat) {
+			this.minLat = lat;
+		}
+		if ( lat > this.maxLat) {
+			this.maxLat = lat;
+		}
+		if ( lon < this.minLon) {
+			this.minLon = lon;
+		}
+		if ( lon > this.maxLon) {
+			this.maxLon = lon;
+		}
+	}
+
+	getCentrePoint() {
+		return ([
+			this.minLat + (this.maxLat - this.minLat) / 2,
+			this.minLon + (this.maxLon - this.minLon) / 2]);
+	}
+}
+
 class SiteList {
 
 	constructor() {
 		this.sites = [];
+		this.map   = null;
 	}
 
 	compileListMarkup( sites, region) {
 		var items = [];
 		var sl = this; /* provide reference to this object from inside of each */
+		this.sites = sites;
+		var thisMarkup = '';
+		this.area   = new SiteAreaFinder();
+		var thisArea = this.area;
+		thisMarkup += '<div class="col col-md-6" id="dive-sites-map" style="height: 500px;"></div>';
+		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
+		thisMarkup += '<div class="col col-md-6" id="dive-sites-list">';
 		$.each(sites, function(key, val){
 
 			var thisItem = sl.getSiteMarkup( val, region);
-			console.log( 'adding new site' );
-			console.log( thisItem );
+			thisArea.considerThis( val.latitude, val.longitude);
+			//console.log( 'adding new site');
+			//console.log( thisItem);
 			items.push(  thisItem);
 		});
-		return items.join( '');
+
+		thisMarkup += items.join('');
+		thisMarkup += '<div>';
+		return( thisMarkup);
 	}
 
 	getSiteMarkup( site, region) {
@@ -61,5 +103,51 @@ class SiteList {
 		thisItem += '</p> </div> </div>';
 		thisItem += '</a>';
 		return thisItem;
+	}
+
+	runSecondaryJavascript() {
+
+		var maxBounds = [[this.area.maxLat, this.area.maxLat], [this.area.minLon, this.area.minLon]]
+
+
+		// map config
+		var mapConfig =  {
+			center: this.area.getCentrePoint(),
+			zoom: 4 //,
+			//maxBounds: maxBounds
+		}
+
+		// create map
+//		var thisMap =
+		var thisMap = this.map = L.map(
+			'dive-sites-map',
+			mapConfig);
+
+		// add basemap
+		L.tileLayer(
+			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: ['a','b','c']}).addTo( this.map );
+
+
+		// add point
+		$.each(this.sites, function(key, site){
+			console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
+			var marker = L.marker(
+				[ site.latitude, site.longitude ]
+			)
+			marker.site_id   = site.id;
+			marker.region_id = site.region;
+			marker.on( 'click', function(e) {
+				console.log( e);
+				showSiteDetail(e.target.site_id,e.target.region_id);
+			});
+			marker.addTo(thisMap);
+
+		});
+
+		console.log( maxBounds);
+		console.log( this.area.getCentrePoint());
 	}
 }
