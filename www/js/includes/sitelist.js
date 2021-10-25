@@ -5,7 +5,7 @@ function showSiteDetail( site, region) {
 		type: "GET",
 		dataType: 'json',
 		//contentType: 'application/json',
-		url: "https://diveapi.eofrom.space/v1/sites/"+site,
+		url: config.URL_SITE+site,
 		success: function (data) {
 			$('#dive-site-detail').html(siteDetails.compileListMarkup(data));
 			$('#dive-regions').hide();

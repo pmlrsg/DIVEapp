@@ -1,16 +1,25 @@
+var config      = new Config();
 var siteList    = new SiteList();
 var regionList  = new RegionList();
 var menuBar     = new MenuBar();
 var siteDetails = new SiteDetails();
 
 $(document).ready(function() {
+	if ( config.DEMO_MODE) {
+		setTimeout( initialiseApp, config.DEMO_MODE_DELAY);
+	} else {
+		initialseApp();
+	}
+});
+
+function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");
 	$('#main-app-div').hide();
     app.fetchFeed();
-});
+}
 
 var app = {
-	api_url: "https://diveapi.eofrom.space/v1/regions",
+	api_url: config.URL_REGIONS,
 	// deviceready Event Handler
 	onDeviceReady: function() {
 		console.log('deviceready');

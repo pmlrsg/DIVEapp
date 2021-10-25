@@ -5,7 +5,7 @@ function showSitesFromRegion( region) {
 		type: "GET",
 		dataType: 'json',
 		//contentType: 'application/json',
-		url: "https://diveapi.eofrom.space/v1/sites?region="+region,
+		url: config.URL_SITES + region,
 		success: function (data) {
 			$('#dive-sites').html(siteList.compileListMarkup(data, region));
 			$('#dive-regions').hide();
@@ -35,11 +35,15 @@ class RegionList {
 		var count = 1;
 		$.each(sites, function(key, val){
 
-			var thisItem = sl.getRegionMarkup( val, (count % 2 ) == 0);
-			console.log( 'adding new region' );
-			console.log( thisItem );
-			items.push(  thisItem);
-			count++;
+			if ( !config.SHOW_REGION_ALL && val.id == 0 ) {
+				console.log( 'skipping global region' );
+			} else {
+				var thisItem = sl.getRegionMarkup( val, (count % 2 ) == 0);
+				console.log( 'adding new region' );
+				console.log( thisItem );
+				items.push(  thisItem);
+				count++;
+			}
 		});
 		return items.join( '');
 	}
