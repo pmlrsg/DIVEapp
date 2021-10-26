@@ -54,8 +54,8 @@ class RegionList {
 				var thisItem = sl.getRegionMarkup( val, (count % 2 ) == 0);
 				thisArea.considerThis( val.maxy, val.maxx );
 				thisArea.considerThis( val.miny, val.minx );
-				console.log( 'adding new region' );
-				console.log( thisItem );
+				//console.log( 'adding new region' );
+				//console.log( thisItem );
 				items.push(  thisItem);
 				count++;
 			}
@@ -130,7 +130,7 @@ class RegionList {
 					opacity: 0.9});
 			shape.region_id = region.id;
 			shape.on( 'click', function(e) {
-				console.log( e);
+				//console.log( e);
 				showSitesFromRegion(e.target.region_id);
 			});
 			shape.addTo(thisMap);

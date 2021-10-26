@@ -102,14 +102,14 @@ class SiteList {
 
 		// add point
 		$.each(this.sites, function(key, site){
-			console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
+			//console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
 			var marker = L.marker(
 				[ site.latitude, site.longitude ]
 			)
 			marker.site_id   = site.id;
 			marker.region_id = site.region;
 			marker.on( 'click', function(e) {
-				console.log( e);
+				//console.log( e);
 				showSiteDetail(e.target.site_id,e.target.region_id);
 			});
 			marker.addTo(thisMap);

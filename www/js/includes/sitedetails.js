@@ -35,8 +35,8 @@ class SiteDetails {
 		var sl = this; /* provide reference to this object from inside of each */
 
 		var thisItem = sl.getDetailsMarkup( site);
-		console.log( 'showing site detail' );
-		console.log( thisItem );
+		//console.log( 'showing site detail' );
+		//console.log( thisItem );
 		items.push(  thisItem);
 		return thisItem;
 	}
