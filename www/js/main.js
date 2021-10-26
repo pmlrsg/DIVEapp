@@ -42,6 +42,7 @@ var app = {
 		$('#dive-regions').show();
 		$('#dive-site-detail').hide();
 		menuBar.clearBackButton();
+		regionList.runSecondaryJavascript();
 		},
 	onError: function(data, textStatus, errorThrown) {
         console.error('Data: ');

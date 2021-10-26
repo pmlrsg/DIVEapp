@@ -25,3 +25,37 @@ function humanTimeSince(isoDate) {
 		return day + " " + month + year;
 	}
 }
+
+class AreaFinder {
+	constructor() {
+		this.minLat =  Infinity;
+		this.maxLat = -Infinity;
+		this.minLon =  Infinity;
+		this.maxLon = -Infinity;
+	}
+
+	considerThis( lat, lon) {
+		if ( lat < this.minLat) {
+			this.minLat = lat;
+		}
+		if ( lat > this.maxLat) {
+			this.maxLat = lat;
+		}
+		if ( lon < this.minLon) {
+			this.minLon = lon;
+		}
+		if ( lon > this.maxLon) {
+			this.maxLon = lon;
+		}
+	}
+
+	getCentrePoint() {
+		return ([
+			this.minLat + (this.maxLat - this.minLat) / 2,
+			this.minLon + (this.maxLon - this.minLon) / 2]);
+	}
+}
+
+function getAreaFinder() {
+	return new AreaFinder();
+}

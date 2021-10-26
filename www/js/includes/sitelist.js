@@ -1,4 +1,4 @@
-/** hander to show sites for a specific regions
+/** handler to show sites for a specific regions
     bound to the onclick event for each region **/
 function showSiteDetail( site, region) {
 	$.ajax({
@@ -23,36 +23,6 @@ function showSiteDetail( site, region) {
 	});
 }
 
-class SiteAreaFinder {
-	constructor() {
-		this.minLat =  Infinity;
-		this.maxLat = -Infinity;
-		this.minLon =  Infinity;
-		this.maxLon = -Infinity;
-	}
-
-	considerThis( lat, lon) {
-		if ( lat < this.minLat) {
-			this.minLat = lat;
-		}
-		if ( lat > this.maxLat) {
-			this.maxLat = lat;
-		}
-		if ( lon < this.minLon) {
-			this.minLon = lon;
-		}
-		if ( lon > this.maxLon) {
-			this.maxLon = lon;
-		}
-	}
-
-	getCentrePoint() {
-		return ([
-			this.minLat + (this.maxLat - this.minLat) / 2,
-			this.minLon + (this.maxLon - this.minLon) / 2]);
-	}
-}
-
 class SiteList {
 
 	constructor() {
@@ -65,7 +35,7 @@ class SiteList {
 		var sl = this; /* provide reference to this object from inside of each */
 		this.sites = sites;
 		var thisMarkup = '';
-		this.area   = new SiteAreaFinder();
+		this.area   = new AreaFinder();
 		var thisArea = this.area;
 		thisMarkup += '<div class="col col-md-6" id="dive-sites-map" style="height: 500px;"></div>';
 		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
@@ -118,7 +88,6 @@ class SiteList {
 		}
 
 		// create map
-//		var thisMap =
 		var thisMap = this.map = L.map(
 			'dive-sites-map',
 			mapConfig);
@@ -147,7 +116,7 @@ class SiteList {
 
 		});
 
-		console.log( maxBounds);
-		console.log( this.area.getCentrePoint());
+		//console.log( maxBounds);
+		//console.log( this.area.getCentrePoint());
 	}
 }

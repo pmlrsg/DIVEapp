@@ -1,3 +1,4 @@
+
 /** hander to show sites for a specific regions
     bound to the onclick event for each region **/
 function showSitesFromRegion( region) {
@@ -27,25 +28,41 @@ class RegionList {
 
 	constructor() {
 		this.regions = [];
+		this.map     = null;
+		this.area    = null;
+		this.regions = null;
 	}
 
-	compileListMarkup( sites) {
+	compileListMarkup( regions) {
 		var items = [];
 		var sl = this; /* provide reference to this object from inside of each */
+		this.regions = regions;
 		var count = 1;
-		$.each(sites, function(key, val){
+		var thisMarkup = '';
+		this.area      = getAreaFinder();
+		this.area      = new AreaFinder();
+		var thisArea   = this.area;
+
+		thisMarkup += '<div class="col col-md-6" id="dive-regions-map" style="height: 500px;"></div>';
+		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
+		thisMarkup += '<div class="col col-md-6" id="dive-regions-list">';
+		$.each(regions, function(key, val){
 
 			if ( !config.SHOW_REGION_ALL && val.id == 0 ) {
 				console.log( 'skipping global region' );
 			} else {
 				var thisItem = sl.getRegionMarkup( val, (count % 2 ) == 0);
+				thisArea.considerThis( val.maxy, val.maxx );
+				thisArea.considerThis( val.miny, val.minx );
 				console.log( 'adding new region' );
 				console.log( thisItem );
 				items.push(  thisItem);
 				count++;
 			}
 		});
-		return items.join( '');
+		thisMarkup += items.join( '');
+		thisMarkup += '<div>';
+		return( thisMarkup);
 	}
 
 	getRegionMarkup( region, odd) {
@@ -60,14 +77,6 @@ class RegionList {
 		thisItem += '<div class="card mb-3 listColours">';
 		thisItem += '<img class="card-img-top img-responsive">';
 		thisItem += '<div class="card-body';
-		/* replaced by smart css
-		if ( odd ) {
-			console.log( "this one is odd");
-			thisItem += " dive-list-odd";
-		} else {
-			console.log( "this one is even");
-			thisItem += " dive-list-even";
-		} */
 		thisItem += '">';
 		thisItem += '   <h4 class="card-title">' + region.name +'</h4>';
 		thisItem += '   <p class="card-text">'   + region.description +'</p>'
@@ -86,5 +95,46 @@ class RegionList {
 			thisItem += '</a>';
 		}
 		return thisItem;
+	}
+
+	runSecondaryJavascript() {
+
+		var maxBounds = [[this.area.maxLat, this.area.maxLat], [this.area.minLon, this.area.minLon]]
+
+		// map config
+		var mapConfig =  {
+			center: this.area.getCentrePoint(),
+			zoom: 4,
+			maxBounds: maxBounds
+		}
+
+		var thisMap = this.map = L.map(
+			'dive-regions-map',
+			mapConfig);
+
+		L.tileLayer(
+			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: ['a','b','c']}).addTo( this.map );
+
+		// add regions
+		$.each(this.regions, function(key, region){
+			//console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
+			var shape = L.rectangle(
+				[[ region.maxy, region.maxx ], [ region.miny, region.minx ]],
+				{
+					color: "grey",
+					weight: 1,
+					fill: 1,
+					opacity: 0.9});
+			shape.region_id = region.id;
+			shape.on( 'click', function(e) {
+				console.log( e);
+				showSitesFromRegion(e.target.region_id);
+			});
+			shape.addTo(thisMap);
+		});
+
 	}
 }
