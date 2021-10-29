@@ -31,12 +31,20 @@ class LeafletHelper {
 	}
 
 	static getMapFromAreaFinder( finder, divId, ignoreBounds=false) {
+
+		var centre = finder.getCentrePoint();
+
+		// add a little padding to the north for marker height
+		var topLat = finder.maxLat;
+		var topLatDiff = topLat - centre[0];
+		topLat = (topLatDiff * 1.22) + centre[0];
+
 		var maxBounds = [
-			[finder.maxLat, finder.maxLon],
+			[topLat,        finder.maxLon],
 			[finder.minLat, finder.minLon]]
 
 		var mapConfig =  {
-			center: finder.getCentrePoint(),
+			center: centre,
 		}
 
 		// create map

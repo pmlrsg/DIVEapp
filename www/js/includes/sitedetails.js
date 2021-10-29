@@ -107,7 +107,6 @@ class SiteDetails {
 
 		var af = new AreaFinder();
 		af.considerThis( this.mapConfig[0], this.mapConfig[1]);
-		af.pad( 0.02);
 
 		this.map = LeafletHelper.getMapFromAreaFinder(
 			af,
