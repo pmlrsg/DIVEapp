@@ -76,10 +76,6 @@ class SiteDetails {
 		thisItem += '<div id="dive-site-chart"></div>';
 		thisItem += '</div>';
 
-		this.mapConfig = {
-			center: [ site.latitude, site.longitude],
-			zoom: 2 };
-
 		this.mapConfig = [ site.latitude, site.longitude];
 
 		this.chartConfig = {
@@ -108,14 +104,15 @@ class SiteDetails {
 		new frappe.Chart(
 			"#dive-site-chart", // or a DOM element,
 			this.chartConfig);
-		// draw map
-		$('#dive-site-map').html( "Map");
-		this.map = L.map(
-			'dive-site-map',
-			{
-				center: [ this.mapConfig[0], this.mapConfig[1]],
-				zoom: 8 });
-		LeafletHelper.getBaseLayer().addTo( this.map);
+
+		var af = new AreaFinder();
+		af.considerThis( this.mapConfig[0], this.mapConfig[1]);
+		af.pad( 0.02);
+
+		this.map = LeafletHelper.getMapFromAreaFinder(
+			af,
+			'dive-site-map');
+
 		L.marker(
 			this.mapConfig,
 			{icon: diverIcon}

@@ -49,6 +49,13 @@ class AreaFinder {
 		}
 	}
 
+	pad( padding) {
+		this.maxLat += padding;
+		this.maxLon += padding;
+		this.minLat -= padding;
+		this.minLon -= padding;
+	}
+
 	getCentrePoint() {
 		return ([
 			this.minLat + (this.maxLat - this.minLat) / 2,

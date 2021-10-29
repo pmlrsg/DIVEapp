@@ -77,28 +77,11 @@ class SiteList {
 
 	runSecondaryJavascript() {
 
-		var maxBounds = [[this.area.maxLat, this.area.maxLat], [this.area.minLon, this.area.minLon]]
+		var thisMap = this.map = LeafletHelper.getMapFromAreaFinder( this.area, 'dive-sites-map');
 
 		var diverIcon = LeafletHelper.getIcon();
-		console.log( diverIcon);
-		// map config
-		var mapConfig =  {
-			center: this.area.getCentrePoint(),
-			zoom: 4 //,
-			//maxBounds: maxBounds
-		}
-
-		// create map
-		var thisMap = this.map = L.map(
-			'dive-sites-map',
-			mapConfig);
-
-		// add basemap
-		LeafletHelper.getBaseLayer().addTo( this.map);
-
 		// add point
 		$.each(this.sites, function(key, site){
-			//console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
 
 			var marker = L.marker(
 				[ site.latitude, site.longitude ],
