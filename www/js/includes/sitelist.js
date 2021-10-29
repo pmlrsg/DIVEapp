@@ -79,7 +79,8 @@ class SiteList {
 
 		var maxBounds = [[this.area.maxLat, this.area.maxLat], [this.area.minLon, this.area.minLon]]
 
-
+		var diverIcon = LeafletHelper.getIcon();
+		console.log( diverIcon);
 		// map config
 		var mapConfig =  {
 			center: this.area.getCentrePoint(),
@@ -93,19 +94,16 @@ class SiteList {
 			mapConfig);
 
 		// add basemap
-		L.tileLayer(
-			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			{
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-				subdomains: ['a','b','c']}).addTo( this.map );
-
+		LeafletHelper.getBaseLayer().addTo( this.map);
 
 		// add point
 		$.each(this.sites, function(key, site){
 			//console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
+
 			var marker = L.marker(
-				[ site.latitude, site.longitude ]
-			)
+				[ site.latitude, site.longitude ],
+				{icon: diverIcon}
+			);
 			marker.site_id   = site.id;
 			marker.region_id = site.region;
 			marker.on( 'click', function(e) {

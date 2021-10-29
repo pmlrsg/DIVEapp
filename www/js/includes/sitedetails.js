@@ -104,20 +104,21 @@ class SiteDetails {
 
 	runSecondaryJavascript() {
 		// draw chart
+		var diverIcon = LeafletHelper.getIcon();
 		new frappe.Chart(
 			"#dive-site-chart", // or a DOM element,
 			this.chartConfig);
 		// draw map
-		$('#dive-site-map').html( "Map" );
+		$('#dive-site-map').html( "Map");
 		this.map = L.map(
 			'dive-site-map',
 			{
 				center: [ this.mapConfig[0], this.mapConfig[1]],
 				zoom: 8 });
-		L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-			subdomains: ['a','b','c']
-		}).addTo( this.map );
-		L.marker( this.mapConfig ).addTo(this.map);
+		LeafletHelper.getBaseLayer().addTo( this.map);
+		L.marker(
+			this.mapConfig,
+			{icon: diverIcon}
+		).addTo(this.map);
 	}
 }
