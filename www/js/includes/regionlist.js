@@ -111,12 +111,52 @@ class RegionList {
 					weight: 1,
 					fill: 1,
 					opacity: 0.9});
-			shape.region_id = region.id;
+			shape.region_id   = region.id;
+			shape.region_name = region.name;
+			/*
 			shape.on( 'click', function(e) {
 				//console.log( e);
 				showSitesFromRegion(e.target.region_id);
-			});
+			}); */
 			shape.addTo(thisMap);
+
+		});
+
+		// handle region overlap
+		thisMap.on( 'click', function(e) {
+			var clickedLayers = [];
+			var point = e.latlng;
+			thisMap.eachLayer( function( layer){
+				if (layer.getBounds) {
+					var bounds = layer.getBounds();
+					if ( bounds.contains( point)) {
+						clickedLayers.push( layer);
+					}
+				}
+			});
+			switch( clickedLayers.length) {
+			case 0:
+				// no layers, don't care
+				break;
+			case 1:
+				// one layer just treat it as a normal click
+				showSitesFromRegion(clickedLayers[0].region_id);
+				break;
+			default:
+				// pop up menu time
+
+				var content = '';
+				$.each( clickedLayers, function( index, layer){
+					console.log( layer);
+					content += '<p onclick="showSitesFromRegion('+layer.region_id+');">'+ layer.region_name +'</p>';
+				});
+
+				var popup = L.popup()
+					.setLatLng( point)
+					.setContent( content)
+					.openOn( thisMap);
+				break;
+			}
 		});
 
 	}
