@@ -8,9 +8,9 @@ class MenuBar {
 	drawMenuBar( divId) {
 		var html = '';
 		this.lastId = "#back-button";
-		html += '<div class="row" style="background-color:#016676;color:white">';
-		html += '<div class="col col-md-2 title" style="text-align:left">DIVE</div>';
-		html += '<div id="back-button" class="col col-md-10" style="text-align:right"></div>';
+		html += '<div class="row justify-content-end" style="background-color:#016676;color:white">';
+		html += '<div class="col col-xs-2 title" style="text-align:left">DIVE</div>';
+		html += '<div id="back-button" class="col col-xs-2 float-right" style="text-align:right;float:right"></div>';
 		html += '</div>';
 		$(divId).html(html);
 	}

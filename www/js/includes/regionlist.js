@@ -99,24 +99,7 @@ class RegionList {
 
 	runSecondaryJavascript() {
 
-		var maxBounds = [[this.area.maxLat, this.area.maxLat], [this.area.minLon, this.area.minLon]]
-
-		// map config
-		var mapConfig =  {
-			center: this.area.getCentrePoint(),
-			zoom: 4,
-			maxBounds: maxBounds
-		}
-
-		var thisMap = this.map = L.map(
-			'dive-regions-map',
-			mapConfig);
-
-		L.tileLayer(
-			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			{
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-				subdomains: ['a','b','c']}).addTo( this.map );
+		var thisMap = this.map = LeafletHelper.getMapFromAreaFinder( this.area, 'dive-regions-map');
 
 		// add regions
 		$.each(this.regions, function(key, region){

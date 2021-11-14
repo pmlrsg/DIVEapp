@@ -14,8 +14,8 @@ const siteData = {
 	],
 
 	yMarkers: [
-			   { label: "", value: 0, type: 'solid' },
-			   { label: "Good Diving", value: 4 }
+			   { label: "", value: 0, type: 'solid' }
+//			   { label: "Good Diving", value: 4 }
 			  ],
 }
 
@@ -58,23 +58,44 @@ class SiteDetails {
 		thisItem += '<div class="dive-details">';
 		thisItem += '<div class="container-fluid">';
 		thisItem += '<div class="row">';
-		thisItem += '<div class="col col-md-4">';
+		thisItem += '<div id="dive-details-title" class="col col-md-4">';
 		thisItem += '<h1>'+ site.name         + '</h1>';
-		if ( site.description) {
-			thisItem += '<p>' + site.description  + '</p>';
+		var current_score = '5';
+		if ( site.current_score && null != site.current_score ) {
+			current_score = site.current_score;
 		}
-		thisItem += '<p>latitude:'     + site.latitude     + '</p>';
-		thisItem += '<p>longitude:'    + site.longitude    + '</p>';
-		thisItem += '<p>created:'      + site.create_time  + '</p>';
-		thisItem += '<p>modified:'     + site.modify_time  + '</p>';
-		thisItem += '<p>latest score:' + site.latest_score + '</p>';
-		thisItem += '<p>score last updated:' + site.score_time   + '</p>';
-		thisItem += '</div>';
+		thisItem += '<div class="row">'
+		thisItem += '<div class="col col-md-12 text-righty">';
+		thisItem += `
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+  <polygon fill="yellow" fill-rule="nonzero" stroke="orange"
+   points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>
+</svg>
+`;
+		thisItem += '</div></div>';
+		thisItem += '<div class="container container-table">'
+		thisItem += '<div class="row vertical-centre-row">';
+		thisItem += '<div id="dive-details-current-score" class="col col-md-12">';
+		thisItem += '<p>'+current_score+'<p>';
+		thisItem += '</div></div></div></div>';
 		thisItem += '<div class="col col-md-8" id="dive-site-map" style="height: 300px;">';
 		thisItem += '</div>';
-		thisItem += '</div></div>';
+		thisItem += '</div>';
 		thisItem += '<div id="dive-site-chart"></div>';
 		thisItem += '</div>';
+		thisItem += '<div id="dive-site-additional-details">';
+		thisItem += '<h3>Details:</h2>';
+		if ( site.description) {
+			thisItem += '' + site.description  + '</p>';
+		}
+		thisItem += '<table id="site-details-table">';
+
+		thisItem += '<tr><td>Latitude:</td><td>'           + site.latitude    + '</td></tr>';
+		thisItem += '<tr><td>longitude:</td><td>'          + site.longitude   + '</td></tr>';
+		thisItem += '<tr><td>created:</td><td>'            + site.create_time + '</td></tr>';
+		thisItem += '<tr><td>modified:</td><td>'           + site.modify_time + '</td></tr>';
+		thisItem += '<tr><td>score last updated: </td><td>' + site.score_time  + '</td></tr>';
+		thisItem += '</table></div></div>';
 
 		this.mapConfig = [ site.latitude, site.longitude];
 
