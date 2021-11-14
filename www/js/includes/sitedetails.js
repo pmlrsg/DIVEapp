@@ -1,12 +1,11 @@
 const siteData = {
 	labels: [
-		"26th", "27th", "28th", "29th", "30th", "1st"
 	],
 	datasets: [
 		{
 			name:      "Score",
 			chartType: "line",
-			values:    [ 2,3,4,5,4,5 ]} /*,
+			values:    []} /*,
 		{
 			name:      "Score Bar",
 			chartType: "bar",
@@ -60,7 +59,7 @@ class SiteDetails {
 		thisItem += '<div class="row">';
 		thisItem += '<div id="dive-details-title" class="col col-md-4">';
 		thisItem += '<h1>'+ site.name         + '</h1>';
-		var current_score = '5';
+		var current_score = '?';
 		if ( site.current_score && null != site.current_score ) {
 			current_score = site.current_score;
 		}
@@ -98,6 +97,20 @@ class SiteDetails {
 		thisItem += '</table></div></div>';
 
 		this.mapConfig = [ site.latitude, site.longitude];
+
+		if (site.latest_scores != null) {
+			siteData.datasets[0].values = site.latest_scores;
+
+			var friendlyDates = []
+
+			$.each( site.score_times, function( index, time) {
+				var thisDate = new Date( time);
+				console.log( thisDate);
+				friendlyDates.push( thisDate.getDate());
+			});
+			siteData.labels = friendlyDates;
+		}
+
 
 		this.chartConfig = {
         // new Chart() in case of ES6 module with above usage
