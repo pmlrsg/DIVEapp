@@ -42,7 +42,7 @@ class SiteList {
 		thisMarkup += '<div class="col col-md-6" id="dive-sites-list">';
 		$.each(sites, function(key, val){
 
-			var thisItem = sl.getSiteMarkup( val, region);
+			var thisItem = SiteList.getSiteMarkup( val, region);
 			thisArea.considerThis( val.latitude, val.longitude);
 			//console.log( 'adding new site');
 			//console.log( thisItem);
@@ -54,7 +54,7 @@ class SiteList {
 		return( thisMarkup);
 	}
 
-	getSiteMarkup( site, region) {
+	static getSiteMarkup( site, region) {
 		var thisItem = '';
 		thisItem += '<div class="card mb-3 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
 		thisItem += '<img class="card-img-top img-responsive">';
