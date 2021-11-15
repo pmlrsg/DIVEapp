@@ -51,7 +51,7 @@ class RegionList {
 			if ( !config.SHOW_REGION_ALL && val.id == 0 ) {
 				console.log( 'skipping global region' );
 			} else {
-				var thisItem = sl.getRegionMarkup( val, (count % 2 ) == 0);
+				var thisItem = sl.getRegionMarkup( val);
 				thisArea.considerThis( val.maxy, val.maxx );
 				thisArea.considerThis( val.miny, val.minx );
 				//console.log( 'adding new region' );
@@ -65,7 +65,7 @@ class RegionList {
 		return( thisMarkup);
 	}
 
-	getRegionMarkup( region, odd) {
+	getRegionMarkup( region) {
 		var siteCount = 0;
 		if ( region.site_count && region.site_count > 0 ) {
 			siteCount = region.site_count;
