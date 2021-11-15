@@ -71,10 +71,11 @@ class RegionList {
 			siteCount = region.site_count;
 		}
 		var thisItem  = '';
+		thisItem += '<div class="card mb-3 listColours"'
 		if ( siteCount > 0) {
-			thisItem += '<a class="invisiLink" onclick="showSitesFromRegion('+region.id+')">';
+			thisItem += ' onclick="showSitesFromRegion('+region.id+')"';
 		}
-		thisItem += '<div class="card mb-3 listColours">';
+		thisItem += '>';
 		thisItem += '<img class="card-img-top img-responsive">';
 		thisItem += '<div class="card-body';
 		thisItem += '">';
@@ -87,13 +88,7 @@ class RegionList {
 			siteCount = "No"
 		}
 		thisItem += '<p class="card-text"><small class="text-muted">Contains '+siteCount+' site'+pluralText+'</small>';
-		if ( false && siteCount > 0 ) {
-			thisItem += '<a onclick="showSitesFromRegion('+region.id+')" class="card-link">View sites</a>';
-		}
 		thisItem += ' </div> </div>';
-		if ( siteCount > 0 ) {
-			thisItem += '</a>';
-		}
 		return thisItem;
 	}
 

@@ -56,8 +56,7 @@ class SiteList {
 
 	getSiteMarkup( site, region) {
 		var thisItem = '';
-		thisItem += '<a class="invisiLink" onclick="showSiteDetail('+site.id+','+region+')">';
-		thisItem += '<div class="card mb-3 listColours">';
+		thisItem += '<div class="card mb-3 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
 		thisItem += '<img class="card-img-top img-responsive">';
 		thisItem += '<div class="card-block">'
 		thisItem += '   <h4 class="card-title">' + site.name +'</h4>';
@@ -71,7 +70,6 @@ class SiteList {
 		}
 		thisItem += ' </small>';
 		thisItem += '</p> </div> </div>';
-		thisItem += '</a>';
 		return thisItem;
 	}
 
