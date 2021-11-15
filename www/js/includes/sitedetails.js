@@ -13,9 +13,18 @@ const siteData = {
 	],
 
 	yMarkers: [
-			   { label: "", value: 0, type: 'solid' }
-//			   { label: "Good Diving", value: 4 }
-			  ],
+		{ label: "", value: 0, type: 'solid' },
+		{ label: "", value: 5 }
+	],
+}
+
+function diveSiteToggleFavorite( idSite) {
+	var greyscaleClass = 'dive-greyed-img';
+	if ( config.toggleFavorites( idSite)){
+		$( '#dive-favorite-star').removeClass( greyscaleClass);
+	} else {
+		$( '#dive-favorite-star').addClass( greyscaleClass);
+	}
 }
 
 
@@ -65,8 +74,14 @@ class SiteDetails {
 		}
 		thisItem += '<div class="row">'
 		thisItem += '<div class="col col-md-12 text-righty">';
+
+		var favClass = '';
+		if ( !config.isFavorite( site.id)) {
+			favClass = ' class="dive-greyed-img"';
+		}
 		thisItem += `
-<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+<svg id="dive-favorite-star" width="30" height="30" xmlns="http://www.w3.org/2000/svg"${favClass}
+     onclick="diveSiteToggleFavorite(${site.id});">
   <polygon fill="yellow" fill-rule="nonzero" stroke="orange"
    points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>
 </svg>
@@ -105,7 +120,6 @@ class SiteDetails {
 
 			$.each( site.score_times, function( index, time) {
 				var thisDate = new Date( time);
-				console.log( thisDate);
 				friendlyDates.push( thisDate.getDate());
 			});
 			siteData.labels = friendlyDates;
