@@ -46,6 +46,12 @@ class RegionList {
 		thisMarkup += '<div class="col col-md-6" id="dive-regions-map" style="height: 500px;"></div>';
 		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
 		thisMarkup += '<div class="col col-md-6" id="dive-regions-list">';
+
+		$.each(config.favoriteData, function( key,val) {
+			thisArea.considerThis( val.latitude, val.longitude);
+			var thisItem = SiteList.getSiteMarkup( val, val.region);
+			items.push( thisItem);
+		});
 		$.each(regions, function(key, val){
 
 			if ( !config.SHOW_REGION_ALL && val.id == 0 ) {

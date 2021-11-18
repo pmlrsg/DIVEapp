@@ -10,6 +10,7 @@ class Config {
 		this.URL_BASE_API = 'https://diveapi.eofrom.space/v1/';
 		this.URL_REGIONS  = this.URL_BASE_API + 'regions';
 		this.URL_SITES    = this.URL_BASE_API + 'sites?region=';
+		this.URL_SITES_SPECIFIC = this.URL_BASE_API + 'sites?site_list='
 		this.URL_SITE     = this.URL_BASE_API + 'sites/';
 
 		this.LOG_LEVEL_ERROR   = 1;
@@ -25,12 +26,36 @@ class Config {
 		if ( null != storedFavorites){
 			this.favorites = JSON.parse( storedFavorites);
 		}
+		this.favoriteData = []
 	}
 
 	_writeFavorites( arrFavorites){
 		window.localStorage.setItem(
 			'dive-favorites',
 			JSON.stringify(arrFavorites));
+	}
+
+	populateFavorites() {
+		if ( this.favorites.length > 0 ) {
+			var url = this.URL_SITES_SPECIFIC + this.favorites.join()
+			console.log( "url: "+url);
+			return $.ajax({
+				type:     "GET",
+				dataType: 'json',
+				//contentType: 'application/json',
+				url: url,
+				success: function(data) {
+					config.favoriteData = data;
+				},
+				error: app.onError
+			});
+		} else {
+			return {
+				then: function( thing) {
+					thing();
+				}
+			}
+		}
 	}
 
 	// add a site to the favorites

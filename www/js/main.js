@@ -15,7 +15,8 @@ $(document).ready(function() {
 function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");
 	$('#main-app-div').hide();
-    app.fetchFeed();
+	// run favorites call then get the regions
+	app.sortRegionList();
 }
 
 var app = {
@@ -24,6 +25,12 @@ var app = {
 	onDeviceReady: function() {
 		console.log('deviceready');
     },
+	sortRegionList: function() {
+		config.populateFavorites().then(app.fetchFeed);
+	},
+	fetchFeedChained: function( data, textStatus, jqXHR) {
+		app.fetchFeed();
+	},
 	// API call
 	fetchFeed: function() {
 		$.ajax({
@@ -43,7 +50,7 @@ var app = {
 		$('#dive-site-detail').hide();
 		menuBar.clearBackButton();
 		regionList.runSecondaryJavascript();
-		},
+	},
 	onError: function(data, textStatus, errorThrown) {
         console.error('Data: ');
 		console.error(data);

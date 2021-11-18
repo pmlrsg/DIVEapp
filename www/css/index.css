@@ -187,3 +187,8 @@ body {
 .dive-greyed-img {
 	filter: grayscale(100%);
 }
+
+.dive-logo-small {
+	height: auto;
+	width: 22px;
+}
