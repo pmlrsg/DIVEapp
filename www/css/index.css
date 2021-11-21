@@ -223,7 +223,7 @@ body {
 		height: 96%;
 	}
 
-	#dive-regions-map-side {
+	.dive-map-side {
 		height: 100%;
 	}
 }

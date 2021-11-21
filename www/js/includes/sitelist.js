@@ -37,9 +37,13 @@ class SiteList {
 		var thisMarkup = '';
 		this.area   = new AreaFinder();
 		var thisArea = this.area;
-		thisMarkup += '<div class="col col-md-6" id="dive-sites-map" style="height: 500px;"></div>';
-		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
-		thisMarkup += '<div class="col col-md-6" id="dive-sites-list">';
+		thisMarkup += '<div class="col col-md-6 dive-map-side">';
+		thisMarkup += '<div class="row">';
+		thisMarkup += '<div class="col dive-map-container">';
+		thisMarkup += '<div id="dive-sites-map" class="dive-map-actual"></div></div></div>';
+		thisMarkup += '<div class="row">';
+		thisMarkup += '<div class="col dive-side-placeholder"></div></div></div>'
+		thisMarkup += '<div class="col col-md-6 dive-list" id="dive-sites-list">';
 		$.each(sites, function(key, val){
 
 			var thisItem = SiteList.getSiteMarkup( val, region);
