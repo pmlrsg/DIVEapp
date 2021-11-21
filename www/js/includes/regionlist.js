@@ -43,7 +43,12 @@ class RegionList {
 		this.area      = new AreaFinder();
 		var thisArea   = this.area;
 
-		thisMarkup += '<div class="col col-md-6" id="dive-regions-map" style="height: 500px;"></div>';
+		thisMarkup += '<div class="col col-md-6" id="dive-regions-map-side">';
+		thisMarkup += '<div class="row">';
+		thisMarkup += '<div class="col" id="dive-regions-map-container">';
+		thisMarkup += '<div id="dive-regions-map"></div></div></div>';
+		thisMarkup += '<div class="row">';
+		thisMarkup += '<div class="col" id="dive-regions-wide-padding"></div></div></div>'
 		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
 		thisMarkup += '<div class="col col-md-6" id="dive-regions-list">';
 
