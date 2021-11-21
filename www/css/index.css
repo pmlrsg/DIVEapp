@@ -153,7 +153,16 @@ body {
 }
 
 #header-bar {
+	z-index: 1000;
 	font-size: large;
+	position:  fixed;
+	width: 100%;
+	top:  0;
+	left: 0;
+}
+
+#dive-contents {
+	margin-top: 28px;
 }
 
 .text-righty {
