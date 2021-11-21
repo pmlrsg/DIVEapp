@@ -45,12 +45,12 @@ class RegionList {
 
 		thisMarkup += '<div class="col col-md-6" id="dive-regions-map-side">';
 		thisMarkup += '<div class="row">';
-		thisMarkup += '<div class="col" id="dive-regions-map-container">';
-		thisMarkup += '<div id="dive-regions-map"></div></div></div>';
+		thisMarkup += '<div class="col dive-map-container">';
+		thisMarkup += '<div id="dive-regions-map" class="dive-map-actual"></div></div></div>';
 		thisMarkup += '<div class="row">';
 		thisMarkup += '<div class="col" id="dive-regions-wide-padding"></div></div></div>'
 		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
-		thisMarkup += '<div class="col col-md-6" id="dive-regions-list">';
+		thisMarkup += '<div class="col col-md-6 dive-list">';
 
 		$.each(config.favoriteData, function( key,val) {
 			thisArea.considerThis( val.latitude, val.longitude);

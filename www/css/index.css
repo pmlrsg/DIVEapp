@@ -202,16 +202,16 @@ body {
 	width: 22px;
 }
 
-#dive-regions-list {
+.dive-list {
 	padding-top: 1px;
 }
 
-#dive-regions-map {
+.dive-map-actual {
 	height: 500px;
 }
 
 @media (min-width:768px) {
-	#dive-regions-map-container {
+	.dive-map-container {
 		position: fixed;
 		top:  30px;
 		left: 3px;
@@ -219,8 +219,11 @@ body {
 		height: 100%;
 	}
 
-	#dive-regions-map {
+	.dive-map-actual {
 		height: 96%;
 	}
 
+	#dive-regions-map-side {
+		height: 100%;
+	}
 }
