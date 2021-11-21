@@ -7,11 +7,26 @@ var siteDetails = new SiteDetails();
 $(document).ready(function() {
 
 	// "break" history
+
+	var counter = 0;
+	history.pushState("page"+counter, null, null);
+    window.onpopstate = function () {
+		counter++;
+        history.pushState('page'+counter, null, null);
+        // Handle the back (or forward) buttons here
+        // Will NOT handle refresh, use onbeforeunload for this.
+		menuBar.goBack();
+    };
+	/** old method, swear this worked once
 	window.history.pushState('forward', null, null);
 	$(window).on('popstate', function() {
-		window.history.pushState('forward', null, null);
+
+		//window.history.pushState('forward', null, null);
+		console.log( "back event firing");
 		menuBar.goBack();
-	});
+	}); /* */
+
+
 	// start app
 	if ( config.DEMO_MODE) {
 		setTimeout( initialiseApp, config.DEMO_MODE_DELAY);
