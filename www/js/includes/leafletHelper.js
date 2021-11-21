@@ -45,6 +45,7 @@ class LeafletHelper {
 
 		var mapConfig =  {
 			center: centre,
+			zoomControl: false
 		}
 
 		// create map
