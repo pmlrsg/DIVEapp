@@ -5,12 +5,21 @@ var menuBar     = new MenuBar();
 var siteDetails = new SiteDetails();
 
 $(document).ready(function() {
+
+	// "break" history
+	window.history.pushState('forward', null, null);
+	$(window).on('popstate', function() {
+		window.history.pushState('forward', null, null);
+		menuBar.goBack();
+	});
+	// start app
 	if ( config.DEMO_MODE) {
 		setTimeout( initialiseApp, config.DEMO_MODE_DELAY);
 	} else {
 		initialseApp();
 	}
 });
+
 
 function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");

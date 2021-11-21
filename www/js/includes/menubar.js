@@ -23,11 +23,19 @@ class MenuBar {
 		var html = '';
 		html = '<a style="text-decoration:none;color:inherit" onclick="'+onclick+'">Back</button>';
 		$("#back-button").html(html);
+		this.back = onclick;
 	}
 
 	clearBackButton() {
 		if ( this.lastId && this.lastId != null ) {
 			$(this.lastId).html("");
+		}
+		this.back = null;
+	}
+
+	goBack() {
+		if ( null != this.back ) {
+			$("#back-button").find( 'a')[0].click()
 		}
 	}
 }
