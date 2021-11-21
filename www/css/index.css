@@ -161,6 +161,11 @@ body {
 	left: 0;
 }
 
+.header-colours {
+	color:            white;
+	background-color: #016676;
+}
+
 #dive-contents {
 	margin-top: 28px;
 }
@@ -226,4 +231,39 @@ body {
 	.dive-map-side {
 		height: 100%;
 	}
+}
+#nav-check {
+	display: none;
+}
+
+.nav-btn {
+	margin-top: 0px;
+}
+
+.nav-btn label {
+	margin-bottom: 0;
+}
+
+.nav-btn label span {
+    display: block;
+    height: 5px;
+    width: 15px;
+    border-top: 3px solid #eee;
+}
+#nav-check:not(:checked) ~ .header-bar-nav-items {
+	height: 0px;
+}
+#nav-check:checked ~ .header-bar-nav-items {
+	height: auto;
+}
+
+.header-bar-nav-items {
+	position: absolute;
+	display: block;
+	text-align: center;
+	width: 200px;
+	transition: all 0.3s ease-in;
+	overflow-y: hidden;
+	top: 29px;
+	right: 0px;
 }

@@ -1,3 +1,24 @@
+function showAbout() {
+	$('#dive-generic').html( getAboutContent());
+	$('#dive-regions').hide();
+	$('#dive-sites').hide();
+	$('#dive-site-detail').hide();
+	$('#nav-check').prop("checked",false); // close menu
+	$('#dive-generic').show();
+	menuBar.setBackButton( "app.sortRegionList();");
+}
+
+function getAboutContent() {
+	return `
+<div class="container listColours">
+<div class="row">
+     <p>Behold, this is the about page!</p>
+     <p>Witness and dispair!</p>
+</div>
+</div>
+`;
+}
+
 class MenuBar {
 
 	constructor() {
@@ -8,14 +29,27 @@ class MenuBar {
 	drawMenuBar( divId) {
 		var html = '';
 		this.lastId = "#back-button";
-		html += '<div class="row justify-content-end" style="background-color:#016676;color:white">';
+		html += '<div class="row justify-content-end header-colours">';
 		html += '<div class="col col-xs-2 title" onclick="app.sortRegionList();" style="text-align:left">';
 		html += '<div class="row"><div class="col col-xs-2">';
 		html += '<img class="dive-logo-small" src="img/dive-app-22.png" />';
 		html += '</div><div class="col col-xs-2">';
 		html += 'DIVE</div></div></div>';
-		html += '<div id="back-button" class="col col-xs-2 float-right" style="text-align:right;float:right"></div>';
-		html += '</div>';
+		html += '<div class="col col-xs-2 float-right" style="text-align:right;float:right">';
+		html += '<div class="row">';
+		html += '<div id="back-button" class="col-xs-9"></div><div class="col-xs-3"><input type="checkbox" id="nav-check" />';
+		html += `<div class="nav-btn">
+<label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+</div>`;
+		// add drop down menu items
+		html += `<div class="row header-bar-nav-items header-colours">
+<div class="col col-xs-12" onclick="showAbout();"> About </div>
+<div class="col col-xs-12" onclick="showAbout();"> About </div>`;
+		html += '</div></div></div></div>';
 		$(divId).html(html);
 	}
 
@@ -35,6 +69,7 @@ class MenuBar {
 
 	goBack() {
 		if ( null != this.back ) {
+			$("#nav-check").prop("checked", false);
 			$("#back-button").find( 'a')[0].click()
 		}
 	}

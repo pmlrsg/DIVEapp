@@ -72,6 +72,7 @@ var app = {
 		$('#dive-sites').hide();
 		$('#dive-regions').show();
 		$('#dive-site-detail').hide();
+		$('#dive-generic').hide();
 		menuBar.clearBackButton();
 		regionList.runSecondaryJavascript();
 	},

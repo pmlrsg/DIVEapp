@@ -10,8 +10,9 @@ function showSiteDetail( site, region) {
 			$('#dive-site-detail').html(siteDetails.compileListMarkup(data));
 			$('#dive-regions').hide();
 			$('#dive-sites').hide();
+			$('#dive-generic').hide();
 			$('#dive-site-detail').show();
-			menuBar.setBackButton( "showSitesFromRegion("+region+");")
+			menuBar.setBackButton( "showSitesFromRegion("+region+");");
 			siteDetails.runSecondaryJavascript();
 		},
 		error: function(data, textStatus, errorThrown) {
