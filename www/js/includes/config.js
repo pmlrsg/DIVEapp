@@ -38,7 +38,6 @@ class Config {
 	populateFavorites() {
 		if ( this.favorites.length > 0 ) {
 			var url = this.URL_SITES_SPECIFIC + this.favorites.join()
-			console.log( "url: "+url);
 			return $.ajax({
 				type:     "GET",
 				dataType: 'json',

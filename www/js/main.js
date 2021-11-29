@@ -3,11 +3,11 @@ var siteList    = new SiteList();
 var regionList  = new RegionList();
 var menuBar     = new MenuBar();
 var siteDetails = new SiteDetails();
+var display     = new DisplayController();
 
 $(document).ready(function() {
 
 	// "break" history
-
 	var counter = 0;
 	history.pushState("page"+counter, null, null);
     window.onpopstate = function () {
@@ -68,13 +68,11 @@ var app = {
     },
 	// Update DOM on a Success Event
 	onSuccess: function(data) {
-		$('#dive-regions').html(regionList.compileListMarkup(data));
-		$('#dive-sites').hide();
-		$('#dive-regions').show();
-		$('#dive-site-detail').hide();
-		$('#dive-generic').hide();
+		display.display(
+			regionList.compileListMarkup(data),
+			regionList
+		);
 		menuBar.clearBackButton();
-		regionList.runSecondaryJavascript();
 	},
 	onError: function(data, textStatus, errorThrown) {
         console.error('Data: ');

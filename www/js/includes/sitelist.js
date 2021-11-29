@@ -7,13 +7,10 @@ function showSiteDetail( site, region) {
 		//contentType: 'application/json',
 		url: config.URL_SITE+site,
 		success: function (data) {
-			$('#dive-site-detail').html(siteDetails.compileListMarkup(data));
-			$('#dive-regions').hide();
-			$('#dive-sites').hide();
-			$('#dive-generic').hide();
-			$('#dive-site-detail').show();
+			display.display(
+				siteDetails.compileListMarkup(data),
+				siteDetails);
 			menuBar.setBackButton( "showSitesFromRegion("+region+");");
-			siteDetails.runSecondaryJavascript();
 		},
 		error: function(data, textStatus, errorThrown) {
 			console.error('Data: ');

@@ -1,10 +1,7 @@
 function showAbout() {
-	$('#dive-generic').html( getAboutContent());
-	$('#dive-regions').hide();
-	$('#dive-sites').hide();
-	$('#dive-site-detail').hide();
-	$('#nav-check').prop("checked",false); // close menu
-	$('#dive-generic').show();
+
+	display.display( getAboutContent());
+	$( '#nav-check').prop( "checked",false); // close menu
 	menuBar.setBackButton( "app.sortRegionList();");
 }
 
@@ -12,8 +9,10 @@ function getAboutContent() {
 	return `
 <div class="container listColours">
 <div class="row">
-     <p>Behold, this is the about page!</p>
-     <p>Witness and dispair!</p>
+     <p>The Dive visibilty app.</p>
+     <p>Brought to you by Plymouth Marine Laboratory</p>
+     <p></p>
+     <p>Powered by: Leaflet, frappe-charts, CreoDIAS, and PML</p>
 </div>
 </div>
 `;

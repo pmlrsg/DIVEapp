@@ -8,11 +8,10 @@ function showSitesFromRegion( region) {
 		//contentType: 'application/json',
 		url: config.URL_SITES + region,
 		success: function (data) {
-			$('#dive-sites').html(siteList.compileListMarkup(data, region));
-			$('#dive-regions').hide();
-			$('#dive-sites').show();
-			$('#dive-site-detail').hide();
-			$('#dive-generic').hide();
+			display.display(
+				siteList.compileListMarkup(data, region),
+				siteList
+			);
 			menuBar.setBackButton( "app.fetchFeed();")
 			siteList.runSecondaryJavascript();
 		},
@@ -61,7 +60,7 @@ class RegionList {
 		$.each(regions, function(key, val){
 
 			if ( !config.SHOW_REGION_ALL && val.id == 0 ) {
-				console.log( 'skipping global region' );
+				// nothing here
 			} else {
 				var thisItem = sl.getRegionMarkup( val);
 				thisArea.considerThis( val.maxy, val.maxx );
