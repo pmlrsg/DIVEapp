@@ -4,6 +4,7 @@ class LeafletHelper {
 
 	constructor() {
 		this.icon = null;
+		this.map  = null;
 	}
 
 	static getIcon() {
@@ -45,7 +46,12 @@ class LeafletHelper {
 
 		var mapConfig =  {
 			center: centre,
-			zoomControl: false
+			zoomControl: false,
+			attributionControl: false
+		}
+
+		if ( null != this.map ) {
+			this.map.remove();
 		}
 
 		// create map
@@ -60,6 +66,8 @@ class LeafletHelper {
 		if ( !ignoreBounds) {
 			thisMap.fitBounds( maxBounds);
 		}
+
+		this.map = thisMap;
 
 		return thisMap;
 	}
