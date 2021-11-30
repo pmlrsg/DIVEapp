@@ -26,7 +26,6 @@ $(document).ready(function() {
 		menuBar.goBack();
 	}); /* */
 
-
 	// start app
 	if ( config.DEMO_MODE) {
 		setTimeout( initialiseApp, config.DEMO_MODE_DELAY);
@@ -35,12 +34,25 @@ $(document).ready(function() {
 	}
 });
 
+function showHomePage() {
+	// find out what to show
+	var homePageOption = config.getHomePage();
+
+	// show it
+	if ( homePageOption > -1) {
+		// show site list page for region ${homePageOption}
+		showSitesFromRegion( homePageOption);
+	} else {
+		// show standard home page
+		app.sortRegionList();
+	}
+}
 
 function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");
 	$('#main-app-div').hide();
 	// run favorites call then get the regions
-	app.sortRegionList();
+	showHomePage();
 }
 
 var app = {

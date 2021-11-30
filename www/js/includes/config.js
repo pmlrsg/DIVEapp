@@ -27,12 +27,52 @@ class Config {
 			this.favorites = JSON.parse( storedFavorites);
 		}
 		this.favoriteData = []
+		this.homePage = null;
+	}
+
+	_writeLocalStorage( key, value) {
+		window.localStorage.setItem(
+			key,
+			JSON.stringify(value));
 	}
 
 	_writeFavorites( arrFavorites){
-		window.localStorage.setItem(
+		this._writeLocalStorage(
 			'dive-favorites',
-			JSON.stringify(arrFavorites));
+			arrFavorites);
+	}
+
+	_writeHomePage( homePage){
+		this._writeLocalStorage(
+			'dive-home-page',
+			homePage);
+		this.homePage = homePage;
+	}
+
+	getHomePage() {
+		if ( null == this.homePage){
+			this.homePage = window.localStorage.getItem( 'dive-home-page');
+			if ( null == this.homePage){
+				this.homePage = -1;
+			} else {
+				this.homePage = JSON.parse( this.homePage);
+				if ( ! $.isNumeric( this.homePage)) {
+					this.homePage = -1;
+				}
+			}
+		}
+		return this.homePage;
+	}
+
+	setHomePage( homePage) {
+		if ( $.isNumeric(homePage) && (homePage > -2)) {
+			if ( homePage != this.homePage){
+				this.homePage = homePage;
+				this._writeHomePage( homePage);
+			}
+			return true;
+		}
+		return false;
 	}
 
 	populateFavorites() {

@@ -1,7 +1,7 @@
 function showAbout() {
 
 	display.display( getAboutContent());
-	$( '#nav-check').prop( "checked",false); // close menu
+
 	menuBar.setBackButton( "app.sortRegionList();");
 }
 
@@ -29,7 +29,7 @@ class MenuBar {
 		var html = '';
 		this.lastId = "#back-button";
 		html += '<div class="row justify-content-end header-colours">';
-		html += '<div class="col col-xs-2 title" onclick="app.sortRegionList();" style="text-align:left">';
+		html += '<div class="col col-xs-2 title" onclick="showHomePage();" style="text-align:left">';
 		html += '<div class="row"><div class="col col-xs-2">';
 		html += '<img class="dive-logo-small" src="img/dive-app-22.png" />';
 		html += '</div><div class="col col-xs-2">';
@@ -46,8 +46,8 @@ class MenuBar {
 </div>`;
 		// add drop down menu items
 		html += `<div class="row header-bar-nav-items header-colours">
-<div class="col col-xs-12" onclick="showAbout();"> About </div>
-<div class="col col-xs-12" onclick="showAbout();"> About </div>`;
+<div class="col col-xs-12" onclick="showSettings();menuBar.closeMenu();"> Settings </div>
+<div class="col col-xs-12" onclick="showAbout();menuBar.closeMenu();"> About </div>`;
 		html += '</div></div></div></div>';
 		$(divId).html(html);
 	}
@@ -71,5 +71,9 @@ class MenuBar {
 			$("#nav-check").prop("checked", false);
 			$("#back-button").find( 'a')[0].click()
 		}
+	}
+
+	closeMenu() {
+		$( '#nav-check').prop( "checked",false); // close menu
 	}
 }
