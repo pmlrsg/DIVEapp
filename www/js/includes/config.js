@@ -26,6 +26,11 @@ class Config {
 		if ( null != storedFavorites){
 			this.favorites = JSON.parse( storedFavorites);
 		}
+		this.darkMode = true;
+		var storedDarkmode = window.localStorage.getItem( 'dive-dark-mode');
+		if ( null != storedDarkmode){
+			this.darkMode = JSON.parse( storedDarkmode);
+		}
 		this.favoriteData = []
 		this.homePage = null;
 	}
@@ -47,6 +52,13 @@ class Config {
 			'dive-home-page',
 			homePage);
 		this.homePage = homePage;
+	}
+
+	_writeDarkMode( isDark) {
+		this._writeLocalStorage(
+			'dive-dark-mode',
+			isDark);
+		this.darkMode = isDark;
 	}
 
 	getHomePage() {
@@ -73,6 +85,18 @@ class Config {
 			return true;
 		}
 		return false;
+	}
+
+	getDarkMode() {
+		return this.darkMode;
+	}
+
+	setDarkMode( mode) {
+		if ( mode != this.mode) {
+			this._writeDarkMode( mode);
+			this.darkMode = mode;
+		}
+		return true;
 	}
 
 	populateFavorites() {

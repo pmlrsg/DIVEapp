@@ -44,6 +44,12 @@ class SettingsPage {
 <div class="row">
      <h1>Settings</h1>
      <p>Configure your options below</p><p></p>`;
+		var darkModeCheck = " checked";
+		if ( ! config.getDarkMode()) {
+			darkModeCheck = "";
+		}
+		html += `<p>Dark mode: <input id="dive-settings-darkmode" type="checkbox"${darkModeCheck} onchange="settingsPage.updateDarkMode();" /></p>`;
+
 		if ( this.showLeftOvers) {
 			html += `<p>Show catch all region <input type="checkbox" /></p>
 				<p></p>`;
@@ -54,6 +60,12 @@ class SettingsPage {
 `;
 
 		return html;
+	}
+
+	updateDarkMode() {
+		var darkModeChecked = $('#dive-settings-darkmode').is(':checked');
+		config.setDarkMode(  darkModeChecked);
+		display.setDarkMode( darkModeChecked);
 	}
 
 	updateDefaultRegion() {

@@ -51,6 +51,8 @@ function showHomePage() {
 function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");
 	$('#main-app-div').hide();
+	// check dark mode
+	display.setDarkMode( config.getDarkMode());
 	// run favorites call then get the regions
 	showHomePage();
 }

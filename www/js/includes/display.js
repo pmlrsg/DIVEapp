@@ -31,9 +31,20 @@ class DisplayController {
 		currentDiv.hide();
 		nextDiv.show();
 		currentDiv.empty();
+		$(this).scrollTop(0);
 		if ( null != object) {
 			object.runSecondaryJavascript();
 		}
 		this.currentDivName = nextDivSuffix;
+	}
+
+	setDarkMode( mode) {
+		if ( mode ) {
+			console.log( "setting dark mode on");
+			$( 'body' ).removeClass( 'light-mode');
+		} else {
+			console.log( "setting dark mode off");
+			$( 'body' ).addClass( 'light-mode');
+		}
 	}
 }
