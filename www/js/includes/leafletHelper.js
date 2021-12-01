@@ -67,6 +67,8 @@ class LeafletHelper {
 			thisMap.fitBounds( maxBounds);
 		}
 
+		L.control.scale().addTo( thisMap);
+
 		this.map = thisMap;
 
 		return thisMap;
