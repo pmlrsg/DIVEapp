@@ -31,7 +31,7 @@ function diveSiteToggleFavorite( idSite) {
 class SiteDetails {
 
 	constructor() {
-		this.regions = [];
+		this.site    = null;
 		this.chart   = null;
 		this.chartConfig = null;
 		this.mapConfig = null;
@@ -50,6 +50,7 @@ class SiteDetails {
 	}
 
 	getDetailsMarkup( site) {
+		this.site = site
 		var thisItem  = '';
 
 		/**
@@ -159,6 +160,8 @@ class SiteDetails {
 		this.map = LeafletHelper.getMapFromAreaFinder(
 			af,
 			'dive-site-map');
+
+		this.map.setZoom( this.site.zoom_level);
 
 		L.marker(
 			this.mapConfig,
