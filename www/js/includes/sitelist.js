@@ -44,7 +44,8 @@ class SiteList {
 		thisMarkup += '<div class="col col-md-6 dive-list" id="dive-sites-list">';
 		$.each(sites, function(key, val){
 
-			var thisItem = SiteList.getSiteMarkup( val, region);
+			var isFavorite = config.isFavorite( val.id);
+			var thisItem = SiteList.getSiteMarkup( val, region, isFavorite);
 			thisArea.considerThis( val.latitude, val.longitude);
 			//console.log( 'adding new site');
 			//console.log( thisItem);
@@ -56,11 +57,14 @@ class SiteList {
 		return( thisMarkup);
 	}
 
-	static getSiteMarkup( site, region) {
+	static getSiteMarkup( site, region, favorited=false) {
 		var thisItem = '';
 		thisItem += '<div class="card mb-3 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
 		thisItem += '<img class="card-img-top img-responsive">';
 		thisItem += '<div class="card-block">'
+		if ( favorited) {
+			thisItem += '<div class="card-favorite"><img height="30" width="30" src="img/favorite.svg" /></div>';
+		}
 		thisItem += '   <h4 class="card-title">' + site.name +'</h4>';
 		thisItem += '   <p class="card-text">'   + site.description +'</p>'
 		thisItem += '   <p class="card-text"> Current Score: ' + (site.latest_score || 'Unknown' ) + '</p>'

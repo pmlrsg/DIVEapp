@@ -271,3 +271,9 @@ body {
 .light-mode {
 	background-color: #e8e8e8;
 }
+
+.card-favorite {
+	right: 0;
+	top: 0;
+	position: absolute;
+}

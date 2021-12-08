@@ -52,9 +52,10 @@ class RegionList {
 		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
 		thisMarkup += '<div class="col col-md-6 dive-list">';
 
+		// display favorites at the top of the list
 		$.each(config.favoriteData, function( key,val) {
 			thisArea.considerThis( val.latitude, val.longitude);
-			var thisItem = SiteList.getSiteMarkup( val, val.region);
+			var thisItem = SiteList.getSiteMarkup( val, val.region, true);
 			items.push( thisItem);
 		});
 		$.each(regions, function(key, val){
