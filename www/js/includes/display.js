@@ -29,9 +29,9 @@ class DisplayController {
 		display_object = nextDiv;
 		nextDiv.html( html);
 		currentDiv.hide();
+		window.scrollTo(0,0);
 		nextDiv.show();
 		currentDiv.empty();
-		$(this).scrollTop(0);
 		if ( null != object) {
 			object.runSecondaryJavascript();
 		}
