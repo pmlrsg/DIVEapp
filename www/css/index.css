@@ -175,19 +175,13 @@ body {
 }
 
 #dive-details-current-score {
-	background-size: contain;
-	text-align: center;
-	background-image: url("../img/score-background.svg");
-	height: 120px;
-	width:  120px;
-	line-height: 120px;
-	font-size:   90px;
-
+	text-align: left;
+	color:      yellow;
+	font-size:  24px;
 }
 
 #dive-details-title {
 	padding-top: 7px;
-	height: 210px;
 }
 
 .container-table {

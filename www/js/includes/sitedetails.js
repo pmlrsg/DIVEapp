@@ -67,14 +67,24 @@ class SiteDetails {
 		thisItem += '<div class="dive-details">';
 		thisItem += '<div class="container-fluid">';
 		thisItem += '<div class="row">';
-		thisItem += '<div id="dive-details-title" class="col col-md-4">';
-		thisItem += '<h1>'+ site.name         + '</h1>';
 		var current_score = '?';
 		if ( site.current_score && null != site.current_score ) {
 			current_score = site.current_score;
 		}
-		thisItem += '<div class="row">'
-		thisItem += '<div class="col col-md-12 text-righty">';
+
+		// score
+		thisItem += '<div id="dive-details-current-score" class="col col-xs-2">';
+		thisItem += current_score;
+		thisItem += '</div>';
+
+
+		// title
+		thisItem += '<div id="dive-details-title" class="col col-xs-8">';
+		thisItem += '<h1>'+ site.name         + '</h1>';
+		thisItem += '</div>';
+
+		// favorite star
+		thisItem += '<div class="col col-xs-2 text-righty">';
 
 		var favClass = '';
 		if ( !config.isFavorite( site.id)) {
@@ -87,24 +97,24 @@ class SiteDetails {
    points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>
 </svg>
 `;
-		thisItem += '</div></div>';
-		thisItem += '<div class="container container-table">'
-		thisItem += '<div class="row vertical-centre-row">';
-		thisItem += '<div id="dive-details-current-score" class="col col-md-12">';
-		thisItem += '<p>'+current_score+'<p>';
-		thisItem += '</div></div></div></div>';
-		thisItem += '<div class="col col-md-8" id="dive-site-map" style="height: 300px;">';
 		thisItem += '</div>';
+		thisItem += '</div>'; //end row
+
+		// map
+		thisItem += '<div class="row">';
+		thisItem += '<div class="col col-md-12" id="dive-site-map" style="height: 300px;">';
 		thisItem += '</div>';
+		thisItem += '</div>'; //end row
+
+		// chart
 		thisItem += '<div id="dive-site-chart"></div>';
 		thisItem += '</div>';
 		thisItem += '<div id="dive-site-additional-details">';
 		thisItem += '<h3>Details:</h2>';
 		if ( site.description) {
-			thisItem += '' + site.description  + '</p>';
+			thisItem += '<p>' + site.description  + '</p>';
 		}
 		thisItem += '<table id="site-details-table">';
-
 		thisItem += '<tr><td>Latitude:</td><td>'           + site.latitude    + '</td></tr>';
 		thisItem += '<tr><td>longitude:</td><td>'          + site.longitude   + '</td></tr>';
 		thisItem += '<tr><td>created:</td><td>'            + site.create_time + '</td></tr>';
