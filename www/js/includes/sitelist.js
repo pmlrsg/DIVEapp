@@ -35,13 +35,13 @@ class SiteList {
 		var thisMarkup = '';
 		this.area   = new AreaFinder();
 		var thisArea = this.area;
-		thisMarkup += '<div class="col col-md-6 dive-map-side">';
-		thisMarkup += '<div class="row">';
-		thisMarkup += '<div class="col dive-map-container">';
-		thisMarkup += '<div id="dive-sites-map" class="dive-map-actual"></div></div></div>';
-		thisMarkup += '<div class="row">';
-		thisMarkup += '<div class="col dive-side-placeholder"></div></div></div>'
-		thisMarkup += '<div class="col col-md-6 dive-list" id="dive-sites-list">';
+		thisMarkup += '<div class="col-12 col-md-6 dive-map-side">';
+		thisMarkup +=  '<div class="row dive-map-container-row">';
+		thisMarkup +=   '<div class="col dive-map-container">';
+		thisMarkup +=    '<div id="dive-sites-map" class="dive-map-actual"></div></div></div>';
+		thisMarkup +=  '<div class="row">';
+		thisMarkup +=   '<div class="col dive-side-placeholder"></div></div></div>'
+		thisMarkup += '<div class="col-12 col-md-6 dive-list" id="dive-sites-list">';
 		$.each(sites, function(key, val){
 
 			var isFavorite = config.isFavorite( val.id);
@@ -53,20 +53,20 @@ class SiteList {
 		});
 
 		thisMarkup += items.join('');
-		thisMarkup += '<div>';
+		thisMarkup += '</div>';
 		return( thisMarkup);
 	}
 
 	static getSiteMarkup( site, region, favorited=false) {
 		var thisItem = '';
-		thisItem += '<div class="card mb-3 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
+		thisItem += '<div class="card col-12 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
 		thisItem += '<img class="card-img-top img-responsive">';
 		thisItem += '<div class="card-block">'
 		if ( favorited) {
 			thisItem += '<div class="card-favorite"><img height="30" width="30" src="img/favorite.svg" /></div>';
 		}
 		thisItem += '   <h4 class="card-title">' + site.name +'</h4>';
-		thisItem += '   <p class="card-text">'   + site.description +'</p>'
+		thisItem += '   <p class="card-text">'   + site.description +'&nbsp;</p>'
 		thisItem += '   <p class="card-text"> Current Score: ' + (site.latest_score || 'Unknown' ) + '</p>'
 		thisItem += '   <p class="card-text">';
 		thisItem += '<small class="text-muted">';

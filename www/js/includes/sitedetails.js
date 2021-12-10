@@ -73,18 +73,18 @@ class SiteDetails {
 		}
 
 		// score
-		thisItem += '<div id="dive-details-current-score" class="col col-xs-2">';
+		thisItem += '<div id="dive-details-current-score" class="col-2">';
 		thisItem += current_score;
 		thisItem += '</div>';
 
 
 		// title
-		thisItem += '<div id="dive-details-title" class="col col-xs-8">';
+		thisItem += '<div id="dive-details-title" class="col-8">';
 		thisItem += '<h1>'+ site.name         + '</h1>';
 		thisItem += '</div>';
 
 		// favorite star
-		thisItem += '<div class="col col-xs-2 text-righty">';
+		thisItem += '<div class="col-2 text-righty">';
 
 		var favClass = '';
 		if ( !config.isFavorite( site.id)) {

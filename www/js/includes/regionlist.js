@@ -43,14 +43,13 @@ class RegionList {
 		this.area      = new AreaFinder();
 		var thisArea   = this.area;
 
-		thisMarkup += '<div class="col col-md-6" class="dive-map-side">';
-		thisMarkup += '<div class="row">';
+		thisMarkup += '<div class="col-md-6 col-12" class="dive-map-side">';
+		thisMarkup += '<div class="row dive-map-container-row">';
 		thisMarkup += '<div class="col dive-map-container">';
 		thisMarkup += '<div id="dive-regions-map" class="dive-map-actual"></div></div></div>';
 		thisMarkup += '<div class="row">';
-		thisMarkup += '<div class="col dive-side-placeholder"></div></div></div>'
-		//thisMarkup += '<div class="col col-md-6" id="dive-sites-null" style="height: 500px;"></div>';
-		thisMarkup += '<div class="col col-md-6 dive-list">';
+		thisMarkup += '<div class="dive-side-placeholder"></div></div></div>'
+		thisMarkup += '<div class="col-md-6 col-12 dive-list">';
 
 		// display favorites at the top of the list
 		$.each(config.favoriteData, function( key,val) {
@@ -83,14 +82,13 @@ class RegionList {
 			siteCount = region.site_count;
 		}
 		var thisItem  = '';
-		thisItem += '<div class="card mb-3 listColours"'
+		thisItem += '<div class="card col-12 listColours"'
 		if ( siteCount > 0) {
 			thisItem += ' onclick="showSitesFromRegion('+region.id+')"';
 		}
 		thisItem += '>';
 		thisItem += '<img class="card-img-top img-responsive">';
-		thisItem += '<div class="card-body';
-		thisItem += '">';
+		thisItem += '<div class="card-block">';
 		thisItem += '   <h4 class="card-title">' + region.name +'</h4>';
 		thisItem += '   <p class="card-text">'   + region.description +'</p>'
 		var pluralText = "s";

@@ -41,20 +41,19 @@ class SettingsPage {
 		homeSelect    += '</select>';
 		html          += `
 <div class="container listColours">
-<div class="row">
-     <h1>Settings</h1>
-     <p>Configure your options below</p><p></p>`;
+<div class="row" style="height:200px;">
+     <div class="col-12"><h1>Settings</h1></div>
+     <div class="col-12">Configure your options below</div>`;
 		var darkModeCheck = " checked";
 		if ( ! config.getDarkMode()) {
 			darkModeCheck = "";
 		}
-		html += `<p>Dark mode: <input id="dive-settings-darkmode" type="checkbox"${darkModeCheck} onchange="settingsPage.updateDarkMode();" /></p>`;
+		html += `<div class="col-12">Dark mode: <input id="dive-settings-darkmode" type="checkbox"${darkModeCheck} onchange="settingsPage.updateDarkMode();" /></div>`;
 
 		if ( this.showLeftOvers) {
-			html += `<p>Show catch all region <input type="checkbox" /></p>
-				<p></p>`;
+			html += `<div class="col-12">Show catch all region <input type="checkbox" /></div>`;
 		}
-		html += `<p>Display home region: ${homeSelect}</p>
+		html += `<div class="col-12">Display home region: ${homeSelect}</div>
 </div>
 </div>
 `;
