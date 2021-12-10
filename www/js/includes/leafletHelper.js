@@ -47,7 +47,7 @@ class LeafletHelper {
 		var mapConfig =  {
 			center: centre,
 			zoomControl: false,
-			attributionControl: false
+			//attributionControl: false
 		}
 
 		if ( null != this.map ) {
@@ -58,6 +58,8 @@ class LeafletHelper {
 		var thisMap = L.map(
 			divId,
 			mapConfig);
+
+		thisMap.attributionControl.setPrefix('');
 
 		// add basemap
 		this.getBaseLayer().addTo( thisMap);
