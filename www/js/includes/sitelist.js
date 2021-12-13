@@ -28,7 +28,10 @@ class SiteList {
 		this.map   = null;
 	}
 
-	compileListMarkup( sites, region) {
+	compileListMarkup( data) {
+
+		var region = data.id;
+		var sites  = data.sites;
 		var items = [];
 		var sl = this; /* provide reference to this object from inside of each */
 		this.sites = sites;
@@ -42,6 +45,7 @@ class SiteList {
 		thisMarkup +=  '<div class="row">';
 		thisMarkup +=   '<div class="col dive-side-placeholder"></div></div></div>'
 		thisMarkup += '<div class="col-12 col-md-6 dive-list" id="dive-sites-list">';
+		thisMarkup += '<div class="sites-header col-12"><h2>'+data.name+'</h2></div>';
 		$.each(sites, function(key, val){
 
 			var isFavorite = config.isFavorite( val.id);

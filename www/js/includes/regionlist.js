@@ -6,10 +6,10 @@ function showSitesFromRegion( region) {
 		type: "GET",
 		dataType: 'json',
 		//contentType: 'application/json',
-		url: config.URL_SITES + region,
+		url: config.URL_REGION + region + config.URL_REGION_WITH_SITES_SUFFIX,
 		success: function (data) {
 			display.display(
-				siteList.compileListMarkup(data, region),
+				siteList.compileListMarkup(data),
 				siteList
 			);
 			menuBar.setBackButton( "app.fetchFeed();")

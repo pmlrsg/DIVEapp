@@ -8,6 +8,8 @@ class Config {
 		this.SHOW_REGION_ALL = false;
 
 		this.URL_BASE_API = 'https://diveapi.eofrom.space/v1/';
+		this.URL_REGION   = this.URL_BASE_API + 'regions/';
+		this.URL_REGION_WITH_SITES_SUFFIX     = '?with_sites=true';
 		this.URL_REGIONS  = this.URL_BASE_API + 'regions';
 		this.URL_SITES    = this.URL_BASE_API + 'sites?region=';
 		this.URL_SITES_SPECIFIC = this.URL_BASE_API + 'sites?site_list='

@@ -59,6 +59,7 @@ class LeafletHelper {
 			divId,
 			mapConfig);
 
+		// remove Leaflet accreditaion
 		thisMap.attributionControl.setPrefix('');
 
 		// add basemap
