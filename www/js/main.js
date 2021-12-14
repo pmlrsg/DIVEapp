@@ -34,6 +34,16 @@ $(document).ready(function() {
 	}
 });
 
+// set up controls then draw main content
+function initialiseApp() {
+	menuBar.drawMenuBar( "#header-bar");
+	$('#main-app-div').hide();
+	// check dark mode
+	display.setDarkMode( config.getDarkMode());
+	// run favorites call then get the regions
+	config.populateFavorites().then( showHomePage());
+}
+
 function showHomePage() {
 	// find out what to show
 	var homePageOption = config.getHomePage();
@@ -48,15 +58,6 @@ function showHomePage() {
 	}
 }
 
-function initialiseApp() {
-	menuBar.drawMenuBar( "#header-bar");
-	$('#main-app-div').hide();
-	// check dark mode
-	display.setDarkMode( config.getDarkMode());
-	// run favorites call then get the regions
-	showHomePage();
-}
-
 var app = {
 	api_url: config.URL_REGIONS,
 	// deviceready Event Handler
@@ -64,7 +65,7 @@ var app = {
 		console.log('deviceready');
     },
 	sortRegionList: function() {
-		config.populateFavorites().then(app.fetchFeed);
+		app.fetchFeed();
 	},
 	fetchFeedChained: function( data, textStatus, jqXHR) {
 		app.fetchFeed();
