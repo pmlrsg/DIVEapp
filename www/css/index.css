@@ -295,3 +295,7 @@ body {
 .sites-header {
 	color: white;
 }
+
+.light-mode .sites-header {
+	color: black;
+}
