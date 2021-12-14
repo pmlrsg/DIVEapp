@@ -1,28 +1,4 @@
 
-/** hander to show sites for a specific regions
-    bound to the onclick event for each region **/
-function showSitesFromRegion( region) {
-	$.ajax({
-		type: "GET",
-		dataType: 'json',
-		//contentType: 'application/json',
-		url: config.URL_REGION + region + config.URL_REGION_WITH_SITES_SUFFIX,
-		success: function (data) {
-			display.display(
-				siteList.compileListMarkup(data),
-				siteList
-			);
-			menuBar.setBackButton( "app.fetchFeed();")
-			siteList.runSecondaryJavascript();
-		},
-		error: function(data, textStatus, errorThrown) {
-			console.error('Data: ');
-			console.error(data);
-			console.error('Status: ' + textStatus);
-			console.error('Error: ' + errorThrown);
-		},
-	});
-}
 
 class RegionList {
 

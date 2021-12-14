@@ -18,6 +18,27 @@ const siteData = {
 	],
 }
 
+function showSiteDetail( site, region) {
+	$.ajax({
+		type: "GET",
+		dataType: 'json',
+		//contentType: 'application/json',
+		url: config.URL_SITE+site,
+		success: function (data) {
+			display.display(
+				siteDetails.compileListMarkup(data),
+				siteDetails);
+			menuBar.setBackButton( "showSitesFromRegion("+region+");");
+		},
+		error: function(data, textStatus, errorThrown) {
+			console.error('Data: ');
+			console.error(data);
+			console.error('Status: ' + textStatus);
+			console.error('Error: ' + errorThrown);
+		},
+	});
+}
+
 function diveSiteToggleFavorite( idSite) {
 	var greyscaleClass = 'dive-greyed-img';
 	if ( config.toggleFavorites( idSite)){
@@ -26,7 +47,6 @@ function diveSiteToggleFavorite( idSite) {
 		$( '#dive-favorite-star').addClass( greyscaleClass);
 	}
 }
-
 
 class SiteDetails {
 
