@@ -2,7 +2,7 @@ function showAbout() {
 
 	display.display( getAboutContent());
 
-	menuBar.setBackButton( "app.sortRegionList();");
+	menuBar.setBackButton( "showHomePage();");
 }
 
 function getAboutContent() {

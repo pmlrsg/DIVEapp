@@ -12,7 +12,9 @@ function showSettings() {
 		url: app.api_url, // region list
 		success: function(regions) {
 			display.display(
-				settingsPage.compileListMarkup(regions));},
+				settingsPage.compileListMarkup(regions));
+			menuBar.setBackButton( "showHomePage();");
+		},
 		error: app.onError });
 }
 
@@ -29,7 +31,7 @@ class SettingsPage {
 		if ( -1 == currentRegion){
 			defaultChecked = ' selected'
 		}
-		var homeSelect = `<select id="dive-settings-homepage" onchange="settingsPage.updateDefaultRegion();"><option value="-1"${defaultChecked}>Default</option>`;
+		var homeSelect = `<select id="dive-settings-homepage" onchange="settingsPage.updateDefaultRegion();"><option value="-1"${defaultChecked}>All</option>`;
 		$.each( regions, function( key, region) {
 			var thisOption = `<option value="${region.id}"`;
 			if ( region.id == currentRegion){
