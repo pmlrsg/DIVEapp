@@ -178,11 +178,17 @@ body {
 	width: 100%;
 	top:  0;
 	left: 0;
+	padding-left:  5px;
+	padding-right: 5px;
 }
 
 .header-colours {
 	color:            white;
 	background-color: #016676;
+}
+
+#back-button {
+	margin-right: 8px;
 }
 
 #dive-contents {
@@ -206,6 +212,7 @@ body {
 .container-table {
     display: table;
 }
+
 .vertical-center-row {
     display: table-cell;
     vertical-align: middle;
@@ -323,13 +330,15 @@ body {
 	padding-right: 25px;
 }
 
+.col-header-logo {
+	max-width:    22px;
+	margin-right: 4px;
+}
+
 @media (max-width:576px) {
-	.col-header-logo {
-		padding-left: 7px;
-	}
 
 	/* attempted fix for scroll being over the menu button */
 	.col-header-menu {
-		padding-right: 25px;
+		margin-right: 8px;
 	}
 }
