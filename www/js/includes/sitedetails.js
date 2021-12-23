@@ -39,9 +39,9 @@ function showSiteDetail( site, region) {
 	});
 }
 
-function diveSiteToggleFavorite( idSite) {
+function diveSiteToggleFavorite() {
 	var greyscaleClass = 'dive-greyed-img';
-	if ( config.toggleFavorites( idSite)){
+	if ( config.toggleFavorites(siteDetails.site)){
 		$( '#dive-favorite-star').removeClass( greyscaleClass);
 	} else {
 		$( '#dive-favorite-star').addClass( greyscaleClass);

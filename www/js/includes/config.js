@@ -111,6 +111,7 @@ class Config {
 				url: url,
 				success: function(data) {
 					config.favoriteData = data;
+					console.log( data);
 				},
 				error: app.onError
 			});
@@ -125,10 +126,11 @@ class Config {
 
 	// add a site to the favorites
 	// returns whether it did anything or not
-	addFavorite( idSite) {
-		if ( !this.favorites.includes( idSite)){
-			this.favorites.push( idSite);
+	addFavorite( site) {
+		if ( !this.favorites.includes( site.id)){
+			this.favorites.push( site.id);
 			this._writeFavorites( this.favorites);
+			this.favoriteData.push( site);
 			return true
 		}
 		return false;
@@ -141,6 +143,16 @@ class Config {
 			if ( position > -1) {
 				this.favorites.splice( position, 1);
 				this._writeFavorites( this.favorites);
+				var dataPoint = -1;
+				$.each( this.favoriteData, function( key, d) {
+					if ( d.id == idSite) {
+						dataPoint = key;
+					}
+				});
+				if (dataPoint > -1) {
+					delete this.favoriteData.splice( dataPoint, 1);
+				}
+
 				return true; // removed
 			}
 		}
@@ -156,12 +168,12 @@ class Config {
 	}
 
 	// returns true if added or false if removed
-	toggleFavorites( idSite) {
-		if ( this.isFavorite( idSite)) {
-			this.removeFavorite( idSite);
+	toggleFavorites( site) {
+		if ( this.isFavorite( site.id)) {
+			this.removeFavorite( site.id);
 			return false;
 		} else {
-			this.addFavorite( idSite);
+			this.addFavorite( site);
 			return true;
 		}
 	}

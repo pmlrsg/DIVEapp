@@ -42,7 +42,7 @@ function initialiseApp() {
 	// check dark mode
 	display.setDarkMode( config.getDarkMode());
 	// run favorites call then get the regions
-	config.populateFavorites().then( showHomePage());
+	config.populateFavorites().then( showHomePage);
 }
 
 function showHomePage() {
