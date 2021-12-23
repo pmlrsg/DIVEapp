@@ -236,10 +236,15 @@ body {
 }
 
 .dive-map-actual {
-	height: 500px;
+	min-height: 64vh;
 }
 
 @media (min-width:768px) {
+
+	.dive-map-actual {
+		min-height: 100vh;
+	}
+
 	.dive-map-container {
 		position: fixed;
 		top:  30px;
