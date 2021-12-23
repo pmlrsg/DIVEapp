@@ -193,6 +193,7 @@ body {
 
 #dive-contents {
 	margin-top: 28px;
+	overflow-x: hidden;
 }
 
 .text-righty {
