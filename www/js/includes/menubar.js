@@ -8,10 +8,14 @@ function showAbout() {
 function getAboutContent() {
 	return `
 <div class="container listColours">
-  <div class="row" style="height:200px;">
-     <div class="col-12"><h1>The Dive visibilty app</h1></div>
-     <div class="col-12">Brought to you by Plymouth Marine Laboratory</div>
-     <div class="col-12"><p>Powered by: Leaflet, frappe-charts, CreoDIAS, OpenStreetMap and PML</div>
+  <div class="row" style="min-height:200px;">
+     <div class="col-12"><h1>DIVE - Simple water visibility information for dive planning</h1>
+     <p>DIVE uses data from the EU Copernicus Marine Service to create a simple water visibility score for a dive site.</p><p>The DIVE app is currently in beta release and should not be used as the sole indicator of the suitability of a dive site.</p></p>DIVE is developed by the Centre for Geospatial Applications at <a href="pml.ac.uk">Plymouth Marine Laboratory</a> and we would welcome comments and suggestions for the improvement of the app. Please email us at <a href="mailto:eurogeoss@pml.ac.uk">eurogeoss@pml.ac.uk</a>.</p>
+     <p>The DIVE app is built using these open source packages and services:
+<table><tr><td>Leaflet</td><td><a href="https://leafletjs.com/">https://leafletjs.com/</a></td></tr>
+<tr><td>frappe-charts</td><td><a href="https://frappe.io/charts">https://frappe.io/charts</a></td></tr>
+<tr><td>OpenStreetMap</td><td><a href="https://www.openstreetmap.org/about">https://www.openstreetmap.org/about</a></td></tr>
+</table></p>
   </div>
 </div>
 `;
