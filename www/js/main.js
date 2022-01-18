@@ -1,3 +1,4 @@
+var diveError   = new Error();
 var config      = new Config();
 var siteList    = new SiteList();
 var regionList  = new RegionList();
@@ -79,7 +80,7 @@ var app = {
 			//contentType: 'application/json',
 			url: app.api_url,
 			success: app.onSuccess,
-			error: app.onError
+			error: diveError.getErrorHandler( diveError.AREA_REGION)
 		});
     },
 	// Update DOM on a Success Event

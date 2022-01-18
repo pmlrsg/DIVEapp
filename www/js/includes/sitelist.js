@@ -14,12 +14,7 @@ function showSitesFromRegion( region) {
 			menuBar.setBackButton( "app.fetchFeed();")
 			siteList.runSecondaryJavascript();
 		},
-		error: function(data, textStatus, errorThrown) {
-			console.error('Data: ');
-			console.error(data);
-			console.error('Status: ' + textStatus);
-			console.error('Error: ' + errorThrown);
-		},
+		error: diveError.getErrorHandler( diveError.AREA_SITE_LIST)
 	});
 }
 

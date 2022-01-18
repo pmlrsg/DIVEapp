@@ -113,7 +113,7 @@ class Config {
 					config.favoriteData = data;
 					console.log( data);
 				},
-				error: app.onError
+				error: diveError.getErrorHandler( diveError.AREA_FAVORITES)
 			});
 		} else {
 			return {

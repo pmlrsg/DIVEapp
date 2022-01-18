@@ -30,12 +30,7 @@ function showSiteDetail( site, region) {
 				siteDetails);
 			menuBar.setBackButton( "showSitesFromRegion("+region+");");
 		},
-		error: function(data, textStatus, errorThrown) {
-			console.error('Data: ');
-			console.error(data);
-			console.error('Status: ' + textStatus);
-			console.error('Error: ' + errorThrown);
-		},
+		error: diveError.getErrorHandler( diveError.AREA_SITE)
 	});
 }
 
