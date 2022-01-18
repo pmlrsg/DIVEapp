@@ -52,6 +52,12 @@ class SettingsPage {
 		}
 		html += `<div class="col-12">Dark mode: <input id="dive-settings-darkmode" type="checkbox"${darkModeCheck} onchange="settingsPage.updateDarkMode();" /></div>`;
 
+		var denseModeCheck = " checked";
+		if ( ! config.getDenseMode()) {
+			denseModeCheck = "";
+		}
+		html += `<div class="col-12">Dense mode: <input id="dive-settings-densemode" type="checkbox"${denseModeCheck} onchange="settingsPage.updateDenseMode();" /></div>`;
+
 		if ( this.showLeftOvers) {
 			html += `<div class="col-12">Show catch all region <input type="checkbox" /></div>`;
 		}
@@ -67,6 +73,12 @@ class SettingsPage {
 		var darkModeChecked = $('#dive-settings-darkmode').is(':checked');
 		config.setDarkMode(  darkModeChecked);
 		display.setDarkMode( darkModeChecked);
+	}
+
+	updateDenseMode() {
+		var denseModeChecked = $('#dive-settings-densemode').is(':checked');
+		config.setDenseMode( denseModeChecked);
+		display.setDenseMode( denseModeChecked);
 	}
 
 	updateDefaultRegion() {

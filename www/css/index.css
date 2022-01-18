@@ -343,3 +343,12 @@ body {
 		margin-right: 8px;
 	}
 }
+
+/* dense mode options */
+.dense-mode .card-block {
+	line-height: 1;
+}
+
+.dense-mode .card-title {
+	line-height: 1;
+}

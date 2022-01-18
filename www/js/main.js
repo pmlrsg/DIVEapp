@@ -42,6 +42,7 @@ function initialiseApp() {
 	$('#main-app-div').remove();
 	// check dark mode
 	display.setDarkMode( config.getDarkMode());
+	display.setDenseMode( config.getDenseMode());
 	// run favorites call then get the regions
 	config.populateFavorites().then( showHomePage);
 }

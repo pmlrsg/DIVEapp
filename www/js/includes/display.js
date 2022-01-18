@@ -10,6 +10,7 @@ class DisplayController {
 	constructor() {
 		this.divOptions     = [ "first", "second"];
 		this.currentDivName = this.divOptions[ 0];
+		this.denseMode      = false;
 	}
 
 	getNextDiv() {
@@ -36,6 +37,16 @@ class DisplayController {
 			object.runSecondaryJavascript();
 		}
 		this.currentDivName = nextDivSuffix;
+	}
+
+	setDenseMode( isOn) {
+		if ( ! isOn ) {
+			console.log( "setting dense mode off");
+			$( 'body' ).removeClass( 'dense-mode');
+		} else {
+			console.log( "setting dense mode on");
+			$( 'body' ).addClass( 'dense-mode');
+		}
 	}
 
 	setDarkMode( mode) {

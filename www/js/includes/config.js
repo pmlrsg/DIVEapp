@@ -33,6 +33,11 @@ class Config {
 		if ( null != storedDarkmode){
 			this.darkMode = JSON.parse( storedDarkmode);
 		}
+		this.denseMode = false;
+		var storedDensemode = window.localStorage.getItem( 'dive-dense-mode');
+		if ( null != storedDensemode){
+			this.denseMode = JSON.parse( storedDensemode);
+		}
 		this.favoriteData = []
 		this.homePage = null;
 	}
@@ -61,6 +66,13 @@ class Config {
 			'dive-dark-mode',
 			isDark);
 		this.darkMode = isDark;
+	}
+
+	_writeDenseMode( isDense) {
+		this._writeLocalStorage(
+			'dive-dense-mode',
+			isDense);
+		this.denseMode = isDense;
 	}
 
 	getHomePage() {
@@ -97,6 +109,18 @@ class Config {
 		if ( mode != this.mode) {
 			this._writeDarkMode( mode);
 			this.darkMode = mode;
+		}
+		return true;
+	}
+
+	getDenseMode() {
+		return this.denseMode;
+	}
+
+	setDenseMode( mode) {
+		if ( mode != this.mode) {
+			this._writeDenseMode( mode);
+			this.denseMode = mode;
 		}
 		return true;
 	}
