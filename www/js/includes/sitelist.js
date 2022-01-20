@@ -68,7 +68,7 @@ class SiteList {
 		}
 		thisItem += '   <h4 class="card-title">' + site.name +'</h4>';
 		thisItem += '   <p class="card-text">'   + site.description +'&nbsp;</p>'
-		thisItem += '   <p class="card-text"> Current Score: ' + (site.latest_score || 'Unknown' ) + '</p>'
+		thisItem += '   <p class="card-text"> Current Score: ' + (site.current_score || 'Unknown' ) + '</p>'
 		thisItem += '   <p class="card-text">';
 		thisItem += '<small class="text-muted">';
 		if ( site.score_time != null ) {
