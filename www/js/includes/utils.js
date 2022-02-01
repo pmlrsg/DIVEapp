@@ -26,6 +26,16 @@ function humanTimeSince(isoDate) {
 	}
 }
 
+function sensibleRounding( number, places=2) {
+	num = parseFloat( number).toFixed( places);
+	return +num;
+}
+
+function sensibleDateTime( isoTimeStamp) {
+	d = new Date( isoTimeStamp);
+	return d.toString();
+}
+
 class AreaFinder {
 	constructor() {
 		this.minLat =  Infinity;

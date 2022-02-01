@@ -54,6 +54,7 @@ class SiteDetails {
 	}
 
 	compileListMarkup( site) {
+		this.site = site;
 		var items = [];
 		var sl = this; /* provide reference to this object from inside of each */
 
@@ -130,11 +131,10 @@ class SiteDetails {
 			thisItem += '<p>' + site.description  + '</p>';
 		}
 		thisItem += '<table id="site-details-table">';
-		thisItem += '<tr><td>Latitude:</td><td>'           + site.latitude    + '</td></tr>';
-		thisItem += '<tr><td>longitude:</td><td>'          + site.longitude   + '</td></tr>';
-		thisItem += '<tr><td>created:</td><td>'            + site.create_time + '</td></tr>';
-		thisItem += '<tr><td>modified:</td><td>'           + site.modify_time + '</td></tr>';
-		thisItem += '<tr><td>score last updated: </td><td>' + site.score_time  + '</td></tr>';
+		thisItem += '<tr><td>Latitude:</td><td>'  + sensibleRounding( site.latitude) + '</td></tr>';
+		thisItem += '<tr><td>longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
+		thisItem += '<tr><td>created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
+		thisItem += '<tr><td>modified:</td><td>'  + sensibleDateTime( site.modify_time) + '</td></tr>';
 		thisItem += '</table></div></div>';
 
 		this.mapConfig = [ site.latitude, site.longitude];
