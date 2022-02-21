@@ -329,8 +329,16 @@ body {
 
 .card-score {
 	right: 10px;
-	top: 10px;
 	position: absolute;
+	height: 100%;
+	width: 128px;
+}
+
+.card-score img{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
 }
 
 .sites-header {
