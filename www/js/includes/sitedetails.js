@@ -85,7 +85,13 @@ class SiteDetails {
 		thisItem += '<div class="row">';
 		var current_score = '?';
 		if ( site.current_score && null != site.current_score ) {
-			current_score = site.current_score;
+			if ( site.current_score > 0 ) {
+				current_score = site.current_score;
+				if ( current_score > 5 ) {
+					current_score = 5;
+				}
+				current_score = '<img alt="'+current_score+'" height="32" width="64" src="img/goggle-0'+current_score+'-64x32.png">';
+			}
 		}
 
 		// score
@@ -107,7 +113,7 @@ class SiteDetails {
 			favClass = ' class="dive-greyed-img"';
 		}
 		thisItem += `
-<svg id="dive-favorite-star" width="30" height="30" xmlns="http://www.w3.org/2000/svg"${favClass}
+<svg class="nudge-down-4" id="dive-favorite-star" width="30" height="30" xmlns="http://www.w3.org/2000/svg"${favClass}
      onclick="diveSiteToggleFavorite(${site.id});">
   <polygon fill="yellow" fill-rule="nonzero" stroke="orange"
    points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>

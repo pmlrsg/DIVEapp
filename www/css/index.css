@@ -232,6 +232,10 @@ body {
 	padding-top: 1px;
 }
 
+.nudge-down-4 {
+	padding-top: 4px;
+}
+
 .dive-map-container {
 	height: 100%;
 }
@@ -316,6 +320,12 @@ body {
 .card-favorite {
 	right: 0;
 	top: 0;
+	position: absolute;
+}
+
+.card-score {
+	right: 10px;
+	top: 10px;
 	position: absolute;
 }
 
