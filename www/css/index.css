@@ -189,6 +189,7 @@ body {
 
 #back-button {
 	margin-right: 8px;
+	min-width: 38px;
 }
 
 #dive-contents {
@@ -350,7 +351,8 @@ body {
 }
 
 .col-header-menu {
-	padding-right: 25px;
+	padding-right: 4px !important;
+	text-align: right;
 }
 
 .col-header-logo {
