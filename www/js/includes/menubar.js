@@ -1,7 +1,10 @@
 function showAbout() {
-
 	display.display( getAboutContent());
+	menuBar.setBackButton( "showHomePage();");
+}
 
+function showHelp() {
+	display.display( getHelpContent());
 	menuBar.setBackButton( "showHomePage();");
 }
 
@@ -20,6 +23,35 @@ function getAboutContent() {
   </div>
 </div>
 `;
+}
+
+function getHelpContent() {
+
+	var thisHtml = `
+<div class="container listColours">
+  <div class="row" style="min-height:200px;">
+     <div class="col-12"><h1>DIVE - Help</h1>
+     <p>DIVE uses a scale from 1 to 5 to describe water visibilty, where 5 is high visibility for your area and 1 is poor visibility.</p>
+     <p>We visibly represent these with icons in the following way.</p>
+     <table class="table-header-centered">
+        <tr><th>Score</th><th>Icon</th><th>Visibility</th></tr>
+     `;
+	for ( const n of [...Array(5).keys()].reverse()) {
+		var imgNum = n + 1;
+		thisHtml += `<tr><td>${imgNum}</td><td><img src="img/goggle-0${imgNum}-128x64.png"></td><td class="text-center">`;
+		if ( 5 == imgNum) {
+			thisHtml += 'High';
+		} else if ( 1 == imgNum) {
+			thisHtml += 'Poor';
+		}
+		thisHtml += '</td></tr>';
+	}
+	thisHtml += `
+</table></p>
+  </div>
+</div>
+`;
+	return thisHtml;
 }
 
 class MenuBar {
@@ -54,6 +86,7 @@ class MenuBar {
 		// add drop down menu items
 		html +=     `<div class="row header-bar-nav-items header-colours">
 <div class="col col-xs-12" onclick="showSettings();menuBar.closeMenu();"> Settings </div>
+<div class="col col-xs-12" onclick="showHelp();menuBar.closeMenu();"> Help </div>
 <div class="col col-xs-12" onclick="showAbout();menuBar.closeMenu();"> About </div>`;
 		html +=     '</div></div></div></div>';
 		$(divId).html(html);
