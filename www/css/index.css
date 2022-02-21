@@ -240,6 +240,10 @@ body {
 	height: 100%;
 }
 
+.table-header-centered th {
+	text-align: center;
+}
+
 .dive-map-container-row {
 	height: 100%;
 	/* added to correct v4.6.1 issue with map width */
