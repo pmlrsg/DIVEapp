@@ -110,10 +110,10 @@ class SiteDetails {
 
 		var favClass = '';
 		if ( !config.isFavorite( site.id)) {
-			favClass = ' class="dive-greyed-img"';
+			favClass = ' dive-greyed-img';
 		}
 		thisItem += `
-<svg class="nudge-down-4" id="dive-favorite-star" width="30" height="30" xmlns="http://www.w3.org/2000/svg"${favClass}
+<svg class="nudge-down-4${favClass}" id="dive-favorite-star" width="30" height="30" xmlns="http://www.w3.org/2000/svg"
      onclick="diveSiteToggleFavorite(${site.id});">
   <polygon fill="yellow" fill-rule="nonzero" stroke="orange"
    points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>
