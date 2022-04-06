@@ -61,14 +61,17 @@ class SiteList {
 	static getSiteMarkup( site, region, favorited=false) {
 		var thisItem = '';
 		thisItem += '<div class="card col-12 listColours" onclick="showSiteDetail('+site.id+','+region+')">';
-		thisItem += '<img class="card-img-top img-responsive">';
-		thisItem += '<div class="card-block">'
+		thisItem +=  '<img class="card-img-top img-responsive">';
+		thisItem +=  '<div class="card-block">'
 		if (( site.current_score ) && ( site.current_score > 0 )) {
 			var current_score = site.current_score;
 			if ( current_score > 5 ) {
 				current_score = 5;
 			}
-			thisItem += '<div class="card-score"><img alt="'+current_score+'" height="64" width="128" src="img/goggle-0'+current_score+'-128x64.png"></div>';
+			var iconHeight = 48;
+			var iconWidth  = 96;
+			thisItem += '<div class="card-score">';
+			thisItem +=  '<img alt="'+current_score+'" height="'+iconHeight+'" width="'+iconWidth+'" src="img/goggle-0'+current_score+'-'+iconWidth+'x'+iconHeight+'.png"></div>';
 		}
 
 		if ( favorited) {
