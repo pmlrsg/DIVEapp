@@ -39,8 +39,10 @@ class RegionList {
 				// nothing here
 			} else {
 				var thisItem = sl.getRegionMarkup( val);
-				thisArea.considerThis( val.maxy, val.maxx );
-				thisArea.considerThis( val.miny, val.minx );
+				if ( val.maxy && val.maxx && val.miny && val.minx ) {
+					thisArea.considerThis( val.maxy, val.maxx );
+					thisArea.considerThis( val.miny, val.minx );
+				}
 				//console.log( 'adding new region' );
 				//console.log( thisItem );
 				items.push(  thisItem);
@@ -85,25 +87,27 @@ class RegionList {
 		// add regions
 		$.each(this.regions, function(key, region){
 			//console.log( "Adding: (" + key + ") "+ site.latitude + ", " + site.longitude );
-			var shape = L.rectangle(
-				[[ region.maxy, region.maxx ], [ region.miny, region.minx ]],
-				{
-					color: "grey",
-					weight: 1,
-					fill: 1,
-					opacity: 0.9});
-			shape.region_id   = region.id;
-			shape.region_name = region.name;
-			/*
-			shape.on( 'click', function(e) {
-				//console.log( e);
-				showSitesFromRegion(e.target.region_id);
-			}); */
-			shape.addTo(thisMap);
+			if ( region.maxy && region.maxx && region.miny && region.minx ) {
+				var shape = L.rectangle(
+					[[ region.maxy||0, region.maxx||0 ], [ region.miny||0, region.minx||0 ]],
+					{
+						color: "grey",
+						weight: 1,
+						fill: 1,
+						opacity: 0.9});
+				shape.region_id   = region.id;
+				shape.region_name = region.name;
+				/*
+				  shape.on( 'click', function(e) {
+				  //console.log( e);
+				  showSitesFromRegion(e.target.region_id);
+				  }); */
+				shape.addTo(thisMap);
+			}
 
 		});
 
-		// handle region overlap
+		// handle region overlap with selector popup
 		thisMap.on( 'click', function(e) {
 			var clickedLayers = [];
 			var point = e.latlng;
