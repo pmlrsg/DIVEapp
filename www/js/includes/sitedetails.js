@@ -18,6 +18,8 @@ const siteData = {
 	],
 }
 
+const defaultSiteZoomLevel = 11;
+
 function showSiteDetail( site, region) {
 	$.ajax({
 		type: "GET",
@@ -192,7 +194,7 @@ class SiteDetails {
 			af,
 			'dive-site-map');
 
-		this.map.setZoom( this.site.zoom_level);
+		this.map.setZoom( this.site.zoom_level||defaultSiteZoomLevel);
 
 		L.marker(
 			this.mapConfig,
