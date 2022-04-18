@@ -20,6 +20,8 @@ function getAboutContent() {
 <tr><td>frappe-charts</td><td><a href="https://frappe.io/charts">https://frappe.io/charts</a></td></tr>
 <tr><td>OpenStreetMap</td><td><a href="https://www.openstreetmap.org/about">https://www.openstreetmap.org/about</a></td></tr>
 </table></p>
+     <p>Funded by</p>
+<div><img class="dive-about-eshape-logo" src="img/e-shape-logo.png"></div>
   </div>
 </div>
 `;
