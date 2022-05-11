@@ -1,7 +1,7 @@
 # Cordova
 /platforms
 /plugins
-
+/builds
 # Node
 npm-debug.log
 /node_modules
