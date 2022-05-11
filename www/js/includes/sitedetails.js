@@ -1,3 +1,38 @@
+const siteChartOptions = {
+	responsive: true,
+	maintainAspectRatio: false,
+	plugins: {
+		legend: {
+			display: false
+		},
+		datalabels: {
+			//				offset: 10, // pixel offset from centre
+			align: 'centre',
+			color: 'white'
+		}
+
+	},
+    scales: {
+        y: {
+            beginAtZero: true,
+			min: 0,
+			max: 5,
+			ticks: {
+				stepSize: 1,
+				//color: 'white' // changes tick text colour
+			},
+			grid: {
+				color: 'lightgrey'
+			}
+        },
+		x: {
+			grid: {
+				color: 'lightgrey'
+			}
+		}
+    }
+};
+
 const siteData = {
 	labels: [
 	],
@@ -18,6 +53,7 @@ const siteData = {
 	],
 }
 
+const siteDetailChartCanvasId = 'dive-site-chart-canvas';
 const defaultSiteZoomLevel = 11;
 
 function showSiteDetail( site, region) {
@@ -131,8 +167,9 @@ class SiteDetails {
 		thisItem += '</div>'; //end row
 
 		// chart
-		thisItem += '<div id="dive-site-chart"></div>';
-		thisItem += '</div>';
+		thisItem += '<div id="dive-site-chart" height="250" width="100%">';
+		thisItem += '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
+		thisItem += '</div></div>';
 		thisItem += '<div id="dive-site-additional-details">';
 		thisItem += '<h3>Details:</h2>';
 		if ( site.description) {
@@ -182,10 +219,31 @@ class SiteDetails {
 
 	runSecondaryJavascript() {
 		// draw chart
+		const ctx = document.getElementById(siteDetailChartCanvasId).getContext('2d');
+		var gradient = ctx.createLinearGradient(0, 0, 0, 100);
+		gradient.addColorStop(0, 'rgba(1, 102, 118, 1)');
+		gradient.addColorStop(1, 'rgba(1, 102, 118,0.1)');
+
+		const chart = new Chart(ctx, {
+			plugins: [ChartDataLabels],
+			type: 'bar',
+			data: {
+				labels: siteData.labels,
+				datasets: [{
+					fill: 'origin',
+					label: 'score',
+					data: siteData.datasets[0].values,
+					backgroundColor: gradient,
+					pointRadius: 8, // size of individual points
+					pointBorderColor: 'rgba(255,255,255, 1)', // colour of point border
+					borderWidth: 2, // size of data point outline
+				}]
+			},
+			options: siteChartOptions
+		});
+
+		// draw map
 		var diverIcon = LeafletHelper.getIcon();
-		new frappe.Chart(
-			"#dive-site-chart", // or a DOM element,
-			this.chartConfig);
 
 		var af = new AreaFinder();
 		af.considerThis( this.mapConfig[0], this.mapConfig[1]);
