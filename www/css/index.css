@@ -395,3 +395,8 @@ body {
 #site-details-table tr td {
 	vertical-align: top;
 }
+
+tr:nth-child(odd) {
+	//	background: #aeb0b3;
+	background: #929599;
+}
