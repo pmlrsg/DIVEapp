@@ -84,12 +84,9 @@ h1 {
     text-align:center;
 }
 
-h2 {
+h2, h3 {
 	font-size: 22px;
-}
-
-h3 {
-	font-size: 22px;
+	font-weight:normal;
 }
 
 .event {
