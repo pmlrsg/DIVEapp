@@ -10,7 +10,6 @@ const siteChartOptions = {
 			align: 'centre',
 			color: 'white'
 		}
-
 	},
     scales: {
         y: {
@@ -167,20 +166,26 @@ class SiteDetails {
 		thisItem += '</div>'; //end row
 
 		// chart
+		thisItem += '<div class="row">';
+		thisItem += '<div class="col col-md-12" id="dive-site-chart-container">';
+		thisItem += '<div id="dive-site-chart-title"><h3>Historic Scores</h3></div>';
 		thisItem += '<div id="dive-site-chart" height="250" width="100%">';
 		thisItem += '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
-		thisItem += '</div></div>';
-		thisItem += '<div id="dive-site-additional-details">';
-		thisItem += '<h3>Details:</h2>';
+		thisItem += '</div></div></div>';
+
+		// additional details
+		thisItem += '<div class="row">';
+		thisItem += '<div class="col col-md-12" id="dive-site-additional-details">';
+		thisItem += '<h3>Details</h3>';
 		if ( site.description) {
 			thisItem += '<p>' + site.description  + '</p>';
 		}
 		thisItem += '<table id="site-details-table">';
 		thisItem += '<tr><td>Latitude:</td><td>'  + sensibleRounding( site.latitude) + '</td></tr>';
-		thisItem += '<tr><td>longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
-		thisItem += '<tr><td>created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
-		thisItem += '<tr><td>modified:</td><td>'  + sensibleDateTime( site.modify_time) + '</td></tr>';
-		thisItem += '</table></div></div>';
+		thisItem += '<tr><td>Longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
+		thisItem += '<tr><td>Created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
+		thisItem += '<tr><td>Modified:</td><td>'  + sensibleDateTime( site.modify_time) + '</td></tr>';
+		thisItem += '</table></div></div></div></div>';
 
 		this.mapConfig = [ site.latitude, site.longitude];
 
@@ -196,24 +201,6 @@ class SiteDetails {
 			siteData.labels = friendlyDates;
 		}
 
-
-		this.chartConfig = {
-        // new Chart() in case of ES6 module with above usage
-			title: "Site Scores",
-			data: siteData,
-			type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-			height: 250,
-			//			colors: ['#7cd6fd', '#743ee2'],
-			colors: [ '#016676' ],
-			valuesOverPoints: 1,
-			lineOptions: {
-				dotSize: 8,   // default 4
-				regionFill: 1 // default: 0
-			},
-			barOptions: {
-				spaceRatio: 0.8
-			}
-		};
 		return thisItem;
 	}
 
