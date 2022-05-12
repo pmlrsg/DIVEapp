@@ -27,6 +27,9 @@ const siteChartOptions = {
 		x: {
 			grid: {
 				color: 'lightgrey'
+			},
+			ticks: {
+				minRotation: 50
 			}
 		}
     }
@@ -169,7 +172,7 @@ class SiteDetails {
 		thisItem += '<div class="row">';
 		thisItem += '<div class="col col-md-12" id="dive-site-chart-container">';
 		thisItem += '<div id="dive-site-chart-title"><h3>Historic Scores</h3></div>';
-		thisItem += '<div id="dive-site-chart" height="250" width="100%">';
+		thisItem += '<div id="dive-site-chart" style="height:250px;width:100%;">';
 		thisItem += '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
 		thisItem += '</div></div></div>';
 
@@ -196,7 +199,9 @@ class SiteDetails {
 
 			$.each( site.score_times, function( index, time) {
 				var thisDate = new Date( time);
-				friendlyDates.push( thisDate.getDate());
+				friendlyDates.push(
+					time
+				);
 			});
 			siteData.labels = friendlyDates;
 		}
