@@ -183,7 +183,7 @@ class SiteDetails {
 		if ( site.description) {
 			thisItem += '<p>' + site.description  + '</p>';
 		}
-		thisItem += '<table id="site-details-table">';
+		thisItem += '<table id="site-details-table" style="width:100%;">';
 		thisItem += '<tr><td>Latitude:</td><td>'  + sensibleRounding( site.latitude) + '</td></tr>';
 		thisItem += '<tr><td>Longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
 		thisItem += '<tr><td>Created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
