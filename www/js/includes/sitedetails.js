@@ -212,9 +212,11 @@ class SiteDetails {
 	runSecondaryJavascript() {
 		// draw chart
 		const ctx = document.getElementById(siteDetailChartCanvasId).getContext('2d');
-		var gradient = ctx.createLinearGradient(0, 0, 0, 100);
-		gradient.addColorStop(0, 'rgba(1, 102, 118, 1)');
-		gradient.addColorStop(1, 'rgba(1, 102, 118,0.1)');
+		var gradient = ctx.createLinearGradient(0, 0, 0, 180);
+		gradient.addColorStop(0,   'rgba(1, 102, 118, 1)');
+		gradient.addColorStop(0.1, 'rgba(1, 102, 118, 0.9)');
+		gradient.addColorStop(0.9, 'rgba(1, 102, 118, 0.1)');
+		gradient.addColorStop(1,   'rgba(1, 102, 118, 0)');
 
 		const chart = new Chart(ctx, {
 			plugins: [ChartDataLabels],
