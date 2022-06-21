@@ -168,10 +168,13 @@ class SiteDetails {
 		thisItem += '</div>';
 		thisItem += '</div>'; //end row
 
+
 		// chart
 		thisItem += '<div class="row">';
 		thisItem += '<div class="col col-md-12" id="dive-site-chart-container">';
-		thisItem += '<div id="dive-site-chart-title"><h3>Historic Scores</h3></div>';
+		thisItem += '<div id="dive-site-chart-title" style="width:250px;"><div class="row"><div class="col col-md-11"><h3>Historic Scores</h3></div>';
+		thisItem += '<div class="col col-md-1" style="text-align: center;height:20px;width:20px !important;background-image: url(\'img/question-mark-circle.svg\');background-position: left 0px">?</div></div></div>';
+//		thisItem += '</div>';
 		thisItem += '<div id="dive-site-chart" style="height:250px;width:100%;">';
 		thisItem += '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
 		thisItem += '</div></div></div>';
