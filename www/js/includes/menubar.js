@@ -30,15 +30,15 @@ class MenuBar {
 		html += '<div class="row justify-content-end header-colours">';
 		html +=  '<div class="col-6 title" onclick="showHomePage();" style="text-align:left">';
 		html +=   '<div class="row">';
-		html +=    '<div class="col-1">';
+		html +=    '<div class="col-1 col-logo-header">';
 		html +=     '<img class="dive-logo-small" src="img/dive-app-22.png" />';
 		html +=    '</div>';
 		html +=    '<div class="col-2">';
 		html +=    'DIVE</div></div></div>';
 		html +=  '<div class="col-6">';
 		html +=   '<div class="row justify-content-end">';
-		html +=    '<div id="back-button" class="col-2"></div>';
-		html +=    '<div class="col-1" style="padding-right:25px;"><input type="checkbox" id="nav-check" />';
+		html +=    '<div id="back-button" class="col-3 col-sm-2"></div>';
+		html +=    '<div class="col-1 col-header-menu"><input type="checkbox" id="nav-check" />';
 		html +=     `<div class="nav-btn">
 <label for="nav-check">
       <span></span>

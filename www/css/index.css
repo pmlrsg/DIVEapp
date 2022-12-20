@@ -299,3 +299,18 @@ body {
 .light-mode .sites-header {
 	color: black;
 }
+
+.col-header-menu {
+	padding-right: 25px;
+}
+
+@media (max-width:576px) {
+	.col-header-logo {
+		padding-left: 7px;
+	}
+
+	/* attempted fix for scroll being over the menu button */
+	.col-header-menu {
+		padding-right: 25px;
+	}
+}
