@@ -37,7 +37,8 @@ $(document).ready(function() {
 // set up controls then draw main content
 function initialiseApp() {
 	menuBar.drawMenuBar( "#header-bar");
-	$('#main-app-div').hide();
+	// remove flash screen
+	$('#main-app-div').remove();
 	// check dark mode
 	display.setDarkMode( config.getDarkMode());
 	// run favorites call then get the regions

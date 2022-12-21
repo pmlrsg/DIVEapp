@@ -46,34 +46,46 @@
        <title>PML - Dive</title>
     </head>
     <body>
-        <div class="app" id="main-app-div">
-            <h1>PML - Dive</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Loading</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+      <div id="main-app-div" class="app container-fluid d-flex align-items-center">
+		<div class="row d-flex justify-content-center app-loading-row">
+		  <div class="col-12 col-sm-6 app-loading-image-parent">
+			  <div class="app-loading-image">
+			</div>
+		  </div>
+		  <div class="col-12 col-sm-6">
+			<div class="row align-items-center" style="height:100%;">
+			  <div class="col-12 col-sm-8 app-loading-text">
+				<h1>PML - Dive</h1>
+				<div id="deviceready" class="blink d-flex justify-content-center">
+                  <p class="event listening">Loading</p>
+                  <p class="event received">Device is Ready</p>
+				</div>
+			  </div>
+			</div>
+		  </div>
         </div>
-		<div id="header-bar" class="container-fluid">
+	  </div>
+	  <div id="header-bar" class="container-fluid">
+	  </div>
+	  <div id="dive-contents" class="container-fluid">
+		<div id="dive-display-div-first" class="row">
 		</div>
-		<div id="dive-contents" class="container-fluid">
-		  <div id="dive-display-div-first" class="row">
-		  </div>
-		  <div id="dive-display-div-second" class="row" style="display:none">
-		  </div>
+		<div id="dive-display-div-second" class="row" style="display:none">
 		</div>
-        <script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="vendor/frappe/js/frappe-charts.js"></script>
-		<script type="text/javascript" src="vendor/leaflet/js/leaflet.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/includes/utils.js"></script>
-		<script type="text/javascript" src="js/includes/config.js"></script>
-		<script type="text/javascript" src="js/includes/leafletHelper.js"></script>
-		<script type="text/javascript" src="js/includes/menubar.js"></script>
-		<script type="text/javascript" src="js/includes/display.js"></script>
-		<script type="text/javascript" src="js/includes/regionlist.js"></script>
-		<script type="text/javascript" src="js/includes/sitelist.js"></script>
-		<script type="text/javascript" src="js/includes/sitedetails.js"></script>
-		<script type="text/javascript" src="js/includes/settings.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+	  </div>
+      <script type="text/javascript" src="cordova.js"></script>
+	  <script type="text/javascript" src="vendor/frappe/js/frappe-charts.js"></script>
+	  <script type="text/javascript" src="vendor/leaflet/js/leaflet.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+	  <script type="text/javascript" src="js/includes/utils.js"></script>
+	  <script type="text/javascript" src="js/includes/config.js"></script>
+	  <script type="text/javascript" src="js/includes/leafletHelper.js"></script>
+	  <script type="text/javascript" src="js/includes/menubar.js"></script>
+	  <script type="text/javascript" src="js/includes/display.js"></script>
+	  <script type="text/javascript" src="js/includes/regionlist.js"></script>
+	  <script type="text/javascript" src="js/includes/sitelist.js"></script>
+	  <script type="text/javascript" src="js/includes/sitedetails.js"></script>
+	  <script type="text/javascript" src="js/includes/settings.js"></script>
+	  <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
