@@ -15,6 +15,8 @@ class Config {
 		this.URL_SITES_SPECIFIC = this.URL_BASE_API + 'sites?site_list='
 		this.URL_SITE     = this.URL_BASE_API + 'sites/';
 
+		this.API_KEY      = 'HyWE0GxXwP.Nn18t0BjCVlBQowKIH3zj0i7SVobjwf1';
+
 		this.LOG_LEVEL_ERROR   = 1;
 		this.LOG_LEVEL_WARNING = 2;
 		this.LOG_LEVEL_INFO    = 4;
@@ -40,6 +42,11 @@ class Config {
 		}
 		this.favoriteData = []
 		this.homePage = null;
+
+		// setup ajax defaults
+		$.ajaxSetup({
+			headers: { 'X-API-KEY': this.API_KEY }
+		});
 	}
 
 	_writeLocalStorage( key, value) {
