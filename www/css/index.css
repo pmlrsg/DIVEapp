@@ -246,7 +246,7 @@ body {
 	height: 100%;
 }
 
-.table-header-centered th {
+.table-header-centered th, .e-shape-logo-container {
 	text-align: center;
 }
 
@@ -388,8 +388,8 @@ body {
 }
 
 .dive-about-eshape-logo {
-	margin-top: -87px;
-	margin-bottom: -36px;
+	margin-top: -36px;
+	margin-bottom: -1px;
 }
 
 #site-details-table tr td {
