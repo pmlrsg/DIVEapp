@@ -121,8 +121,8 @@ class SiteDetails {
 		 */
 
 		thisItem += '<div class="dive-details">';
-		thisItem += '<div class="container-fluid">';
-		thisItem += '<div class="row">';
+		thisItem +=  '<div class="container-fluid">';
+		thisItem +=   '<div class="row">';
 		var current_score = '?';
 		if ( site.current_score && null != site.current_score ) {
 			if ( site.current_score > 0 ) {
@@ -135,18 +135,18 @@ class SiteDetails {
 		}
 
 		// score
-		thisItem += '<div id="dive-details-current-score" class="col-2">';
-		thisItem += current_score;
-		thisItem += '</div>';
+		thisItem +=    '<div id="dive-details-current-score" class="col-2">';
+		thisItem +=     current_score;
+		thisItem +=    '</div>';
 
 
 		// title
-		thisItem += '<div id="dive-details-title" class="col-8">';
-		thisItem += '<h1>'+ site.name         + '</h1>';
-		thisItem += '</div>';
+		thisItem +=    '<div id="dive-details-title" class="col-8">';
+		thisItem +=     '<h1>'+ site.name         + '</h1>';
+		thisItem +=    '</div>';
 
 		// favorite star
-		thisItem += '<div class="col-2 text-righty">';
+		thisItem +=    '<div class="col-2 text-righty">';
 
 		var favClass = '';
 		if ( !config.isFavorite( site.id)) {
@@ -159,39 +159,78 @@ class SiteDetails {
    points="15,0 6.3,27 29.4,10.5 0.6,10.5 23.7,27"/>
 </svg>
 `;
-		thisItem += '</div>';
-		thisItem += '</div>'; //end row
+		thisItem +=    '</div>';
+		thisItem +=   '</div>'; //end row
 
 		// map
-		thisItem += '<div class="row">';
-		thisItem += '<div class="col col-md-12" id="dive-site-map" style="height: 300px;">';
-		thisItem += '</div>';
-		thisItem += '</div>'; //end row
-
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12" id="dive-site-map" style="height: 300px;">';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>'; //end row
 
 		// chart
-		thisItem += '<div class="row">';
-		thisItem += '<div class="col col-md-12" id="dive-site-chart-container">';
-		thisItem += '<div id="dive-site-chart-title" style="width:250px;"><div class="row"><div class="col col-md-11"><h3>Historic Scores</h3></div>';
-		thisItem += '<div class="col col-md-1" style="text-align: center;height:20px;width:20px !important;background-image: url(\'img/question-mark-circle.svg\');background-position: left 0px">?</div></div></div>';
-//		thisItem += '</div>';
-		thisItem += '<div id="dive-site-chart" style="height:250px;width:100%;">';
-		thisItem += '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
-		thisItem += '</div></div></div>';
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12" id="dive-site-chart-container">';
+		thisItem +=     '<div id="dive-site-chart-title" style="width:250px;"><div class="row"><div class="col col-md-10"><h3>Historic Scores</h3></div>';
+		thisItem +=      '<div data-toggle="modal" data-target="dialog" onclick="$(\'#score-breakdown-modal\').modal(\'toggle\')" style="text-align: center;height:20px;width:20px !important;background-image: url(\'img/question-mark-circle.svg\');background-position: left 0px">?';
+		thisItem +=      '</div>';
+		thisItem +=     '</div>';
+		thisItem +=    '</div>';
+		thisItem +=    '<div id="dive-site-chart" style="height:250px;width:100%;">';
+		thisItem +=     '<canvas id="'+siteDetailChartCanvasId+'" style="width: content-box"></canvas>';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>'
+		thisItem +=  '</div>';
 
 		// additional details
-		thisItem += '<div class="row">';
-		thisItem += '<div class="col col-md-12" id="dive-site-additional-details">';
-		thisItem += '<h3>Details</h3>';
+		thisItem +=  '<div class="row">';
+		thisItem +=   '<div class="col col-md-12" id="dive-site-additional-details">';
+		thisItem +=    '<h3>Details</h3>';
 		if ( site.description) {
 			thisItem += '<p>' + site.description  + '</p>';
 		}
-		thisItem += '<table id="site-details-table" style="width:100%;">';
-		thisItem += '<tr><td>Latitude:</td><td>'  + sensibleRounding( site.latitude) + '</td></tr>';
-		thisItem += '<tr><td>Longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
-		thisItem += '<tr><td>Created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
-		thisItem += '<tr><td>Modified:</td><td>'  + sensibleDateTime( site.modify_time) + '</td></tr>';
-		thisItem += '</table></div></div></div></div>';
+		thisItem +=    '<table id="site-details-table" style="width:100%;">';
+		thisItem +=     '<tr><td>Latitude:</td><td>'  + sensibleRounding( site.latitude) + '</td></tr>';
+		thisItem +=     '<tr><td>Longitude:</td><td>' + sensibleRounding( site.longitude) + '</td></tr>';
+		thisItem +=     '<tr><td>Created:</td><td>'   + sensibleDateTime( site.create_time) + '</td></tr>';
+		thisItem +=     '<tr><td>Modified:</td><td>'  + sensibleDateTime( site.modify_time) + '</td></tr>';
+		thisItem +=    '</table>';
+		thisItem +=   '</div>';
+		thisItem +=  '</div>';
+		thisItem += '</div>';
+		thisItem += '</div>';
+
+		// modal
+		thisItem += '<div id="score-breakdown-modal" title="Site Scores" class="modal" role="dialog">'
+		thisItem +=  '<div class="modal-header">';
+		thisItem +=   '<h4>Site Scores</h4>';
+		thisItem +=    '<button type="button" class="close" data-dismiss="modal" onclick="$(\'#dialog\').modal(\'toggle\');">&times;</button>';
+		thisItem +=  '</div>';
+		thisItem +=  '<div class="modal-body">';
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12">';
+		thisItem +=     'Scores are calculated using a satellite product known as kd490<br>';
+		thisItem +=     'This attempts to measure how quickly blue/green light (specificly that ';
+		thisItem +=     'with a wavelength of 490nm) is absorbed by the water as it passes down into ';
+		thisItem +=     'it. This allows us to use approximate how cloudy the water is and thus ';
+		thisItem +=     'How far you should be able to see.<br>';
+		thisItem +=     'As this is an approximation we assign each measurement a score based on the ';
+		thisItem +=     'following graph';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>';
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12">';
+		thisItem +=     '<h2>Score vs Visibility</h2>';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>';
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12">';
+
+		thisItem +=     '<img style="width: 100%;" src="img/score-vs-visibility-cropped.png">';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>';
+		thisItem +=  '</div>';
+		thisItem += '</div>';
 
 		this.mapConfig = [ site.latitude, site.longitude];
 
@@ -213,6 +252,9 @@ class SiteDetails {
 	}
 
 	runSecondaryJavascript() {
+		// move modal
+		$('#score-breakdown-modal').detach().appendTo( '#modal-container');
+
 		// draw chart
 		const ctx = document.getElementById(siteDetailChartCanvasId).getContext('2d');
 		var gradient = ctx.createLinearGradient(0, 10, 0, 180);
