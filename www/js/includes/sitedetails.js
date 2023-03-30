@@ -171,8 +171,12 @@ class SiteDetails {
 		// chart
 		thisItem +=   '<div class="row">';
 		thisItem +=    '<div class="col col-md-12" id="dive-site-chart-container">';
-		thisItem +=     '<div id="dive-site-chart-title" style="width:250px;"><div class="row"><div class="col col-md-10"><h3>Historic Scores</h3></div>';
-		thisItem +=      '<div data-toggle="modal" data-target="dialog" onclick="$(\'#score-breakdown-modal\').modal(\'toggle\')" style="text-align: center;height:20px;width:20px !important;background-image: url(\'img/question-mark-circle.svg\');background-position: left 0px">?';
+		thisItem +=     '<div id="dive-site-chart-title" style="width:100%;"><div class="row">';
+		thisItem +=      '<div class="col col-md-10"><h3>Historic Scores</h3></div>';
+		thisItem +=       '<div class="col col-md-2" style="text-align: right">';
+		thisItem +=        '<div data-toggle="modal" data-target="dialog" onclick="$(\'#score-breakdown-modal\').modal(\'toggle\')" style="text-align: center;height:20px;width:20px !important;background-image: url(\'img/question-mark-circle.svg\');background-position: left 0px; margin-left: auto; margin-right: -8px; margin-top: 10px;">?';
+		thisItem +=        '</div>';
+		thisItem +=       '</div>';
 		thisItem +=      '</div>';
 		thisItem +=     '</div>';
 		thisItem +=    '</div>';
@@ -203,19 +207,15 @@ class SiteDetails {
 		// modal
 		thisItem += '<div id="score-breakdown-modal" title="Site Scores" class="modal" role="dialog">'
 		thisItem +=  '<div class="modal-header">';
-		thisItem +=   '<h4>Site Scores</h4>';
+		thisItem +=   '<div style="text-align: center; height:36px; width:36px !important;background-image: url(\'img/question-mark-circle.svg\'); background-size: 100%; font-size: 20px">?</div>';
 		thisItem +=    '<button type="button" class="close" data-dismiss="modal" onclick="$(\'#dialog\').modal(\'toggle\');">&times;</button>';
 		thisItem +=  '</div>';
 		thisItem +=  '<div class="modal-body">';
 		thisItem +=   '<div class="row">';
 		thisItem +=    '<div class="col col-md-12">';
-		thisItem +=     'Scores are calculated using a satellite product known as kd490<br>';
-		thisItem +=     'This attempts to measure how quickly blue/green light (specificly that ';
-		thisItem +=     'with a wavelength of 490nm) is absorbed by the water as it passes down into ';
-		thisItem +=     'it. This allows us to use approximate how cloudy the water is and thus ';
-		thisItem +=     'How far you should be able to see.<br>';
-		thisItem +=     'As this is an approximation we assign each measurement a score based on the ';
-		thisItem +=     'following graph';
+		thisItem +=     '<p>DIVE processes optical data from satellites to estimate how light is attenuated by the sea water. This is similar to what would be observed if you looked down over the side of a boat at the dive site.</p>';
+		thisItem +=     '<p>Visibility is affected by many factors and it is not possible to directly calculate actual visibility for all circumstances so we provide a 1 to 5 score to indicate the relative visibility.</p>';
+		thisItem +=     '<p>The graph below shows how these scores convert to visibility in metres using ideal data. It is not a guarantee, your observations may differ.</p>';
 		thisItem +=    '</div>';
 		thisItem +=   '</div>';
 		thisItem +=   '<div class="row">';

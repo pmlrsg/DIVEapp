@@ -33,23 +33,11 @@ function getHelpContent() {
 <div class="container listColours">
   <div class="row" style="min-height:200px;">
      <div class="col-12"><h1>DIVE - Help</h1>
-     <p>DIVE uses a scale from 1 to 5 to describe water visibilty, where 5 is high visibility for your area and 1 is poor visibility.</p>
-     <p>We visibly represent these with icons in the following way.</p>
-     <table class="table-header-centered">
-        <tr><th>Score</th><th>Icon</th><th>Visibility</th></tr>
-     `;
-	for ( const n of [...Array(5).keys()].reverse()) {
-		var imgNum = n + 1;
-		thisHtml += `<tr><td>${imgNum}</td><td><img src="img/goggle-0${imgNum}-128x64.png"></td><td class="text-center">`;
-		if ( 5 == imgNum) {
-			thisHtml += 'High';
-		} else if ( 1 == imgNum) {
-			thisHtml += 'Poor';
-		}
-		thisHtml += '</td></tr>';
-	}
-	thisHtml += `
-</table></p>
+         <p>To return to the DIVE home screen tap the DIVE icon at the left of the top bar. Other functions (including this help) can be accessed via the menu icon at the right of the bar.<p>
+         <p>Regions can be select either from the list at the bottom of the screen or by tapping directly on the map.</p>
+         <p>Sites within a region may be selected in the same way.</p>
+         <p>When a site is selected, details of that site and a week's worth of historic visibility scores will be displayed.</p>
+     </div>
   </div>
 </div>
 `;
