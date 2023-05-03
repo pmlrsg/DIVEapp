@@ -1,11 +1,11 @@
 function showAbout() {
 	display.display( getAboutContent());
-	menuBar.setBackButton( "showHomePage();");
+	menuBar.setBackButton( menuBar.getHelpAboutSettingsBack());
 }
 
 function showHelp() {
 	display.display( getHelpContent());
-	menuBar.setBackButton( "showHomePage();");
+	menuBar.setBackButton( menuBar.getHelpAboutSettingsBack());
 }
 
 function getAboutContent() {
@@ -47,7 +47,8 @@ function getHelpContent() {
 class MenuBar {
 
 	constructor() {
-		this.back   = null;
+		this.back     = null; // what happens if you press back
+		this.nextBack = null; // possible back destination if we go to Help/About/Settings
 		this.lastId = null;
 	}
 
@@ -89,6 +90,10 @@ class MenuBar {
 		this.back = onclick;
 	}
 
+	setNextBackButton( onclick) {
+		this.nextBack = onclick;
+	}
+	
 	clearBackButton() {
 		if ( this.lastId && this.lastId != null ) {
 			$(this.lastId).html("");
@@ -105,5 +110,13 @@ class MenuBar {
 
 	closeMenu() {
 		$( '#nav-check').prop( "checked",false); // close menu
+	}
+
+	getHelpAboutSettingsBack() {
+		var thisBack = menuBar.nextBack;
+		if ( null == thisBack ) {
+			thisBack = "showHomePage();";
+		}
+		return thisBack;
 	}
 }

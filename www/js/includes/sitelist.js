@@ -11,7 +11,9 @@ function showSitesFromRegion( region) {
 				siteList.compileListMarkup(data),
 				siteList
 			);
-			menuBar.setBackButton( "app.fetchFeed();")
+			if 
+			menuBar.setBackButton( "showHomePage();")
+			menuBar.setNextBackButton( "showSitesFromRegion( "+region+");");
 			siteList.runSecondaryJavascript();
 		},
 		error: diveError.getErrorHandler( diveError.AREA_SITE_LIST)

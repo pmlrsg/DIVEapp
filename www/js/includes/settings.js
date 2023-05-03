@@ -13,7 +13,7 @@ function showSettings() {
 		success: function(regions) {
 			display.display(
 				settingsPage.compileListMarkup(regions));
-			menuBar.setBackButton( "showHomePage();");
+			menuBar.setBackButton( menuBar.getHelpAboutSettingsBack());
 		},
 		error: app.onError });
 }

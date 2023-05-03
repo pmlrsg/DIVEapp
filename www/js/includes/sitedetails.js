@@ -69,6 +69,7 @@ function showSiteDetail( site, region) {
 				siteDetails.compileListMarkup(data),
 				siteDetails);
 			menuBar.setBackButton( "showSitesFromRegion("+region+");");
+			menuBar.setNextBackButton( "showSiteDetail("+site+","+region+");");
 		},
 		error: diveError.getErrorHandler( diveError.AREA_SITE)
 	});
@@ -207,10 +208,27 @@ class SiteDetails {
 		// modal
 		thisItem += '<div id="score-breakdown-modal" title="Site Scores" class="modal" role="dialog">'
 		thisItem +=  '<div class="modal-header">';
-		thisItem +=   '<div style="text-align: center; height:36px; width:36px !important;background-image: url(\'img/question-mark-circle.svg\'); background-size: 100%; font-size: 20px">?</div>';
+		thisItem +=   '<h3>Site Scores</h3>';
 		thisItem +=    '<button type="button" class="close" data-dismiss="modal" onclick="$(\'#dialog\').modal(\'toggle\');">&times;</button>';
 		thisItem +=  '</div>';
 		thisItem +=  '<div class="modal-body">';
+		thisItem +=   '<div class="row">';
+		thisItem +=    '<div class="col col-md-12">';
+		thisItem +=     '<table class="table-header-centered" style="margin:auto;width:100%;max-width:400px">';
+		thisItem +=      '<tr><th>Score</th><th>Icon</th><th>Visibility</th></tr>';
+		for ( const n of [...Array(5).keys()].reverse()) {
+			var imgNum = n + 1;
+			thisItem +=  `<tr><td>${imgNum}</td><td><img src="img/goggle-0${imgNum}-128x64.png"></td><td class="text-center">`;
+			if ( 5 == imgNum) {
+				thisItem += 'High';
+			} else if ( 1 == imgNum) {
+				thisItem += 'Poor';
+			}
+			thisItem += '</td></tr>';
+		}
+		thisItem +=     '</table>';
+		thisItem +=    '</div>';
+		thisItem +=   '</div>';
 		thisItem +=   '<div class="row">';
 		thisItem +=    '<div class="col col-md-12">';
 		thisItem +=     '<p>DIVE processes optical data from satellites to estimate how light is attenuated by the sea water. This is similar to what would be observed if you looked down over the side of a boat at the dive site.</p>';

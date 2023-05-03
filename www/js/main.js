@@ -44,15 +44,16 @@ function initialiseApp() {
 	display.setDarkMode( config.getDarkMode());
 	display.setDenseMode( config.getDenseMode());
 	// run favorites call then get the regions
-	config.populateFavorites().then( showHomePage);
+	config.populateFavorites().then( function() { showHomePage(true)});
 }
 
-function showHomePage() {
+function showHomePage(firstLoad=false) {
 	// find out what to show
 	var homePageOption = config.getHomePage();
 
+	menuBar.setNextBackButton( 'showHomePage()');
 	// show it
-	if ( homePageOption > -1) {
+	if ( firstLoad && homePageOption > -1) {
 		// show site list page for region ${homePageOption}
 		showSitesFromRegion( homePageOption);
 	} else {
