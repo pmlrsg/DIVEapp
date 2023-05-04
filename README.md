@@ -7,9 +7,9 @@ Navigate to the *www* directory and load/host index.html as a starting page
 ## Building as a mobile app
 
 ### Requirements
-Android Studio - latest
-Cordova 11+ (including node.js)
-Java 11
+- Android Studio - latest
+- Cordova 11+ (including node.js)
+- Java 11+
 
 ### To build (linux/mac)
 - Set paths in *setup-env.sh* to match your local install locations
