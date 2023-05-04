@@ -14,7 +14,7 @@ Navigate to the *www* directory and load/host index.html as a starting page
 ### To build (linux/mac)
 - Set paths in *setup-env.sh* to match your local install locations
 - Run `source setup-env.sh`
-- make sure you're in the repositories root direcory
+- make sure you're in the repository's root direcory
 - run build script of your choice
 -- `./build-debug.sh` for an apk file
 -- `./build-release.sh` for an aab app bundle
